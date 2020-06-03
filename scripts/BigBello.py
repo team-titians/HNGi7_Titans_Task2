@@ -6,7 +6,7 @@ def main():
    outro="using  PYTHON for stage 2 task"
    full_message = intro + "\n" + full_name + "\n" + HNGi7_ID + "\n" + ID + "\n" + outro
    print(full_message)
-   return full_message
+   #return full_message
    
 if __name__ == "__main__":
    main() 
