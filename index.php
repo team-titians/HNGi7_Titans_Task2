@@ -29,6 +29,7 @@ foreach($scripts as $script){
     
     $intern->file= $script;
     $intern->output = $output[0];
+    $intern->main_output = preg_replace('/(?:and\semail\s([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+))/', '', $output[0]);
     $intern->name = $matches[0][0];
     $intern->id = $matches[0][1];
     $intern->email = $matches[0][2];
@@ -48,4 +49,3 @@ if ($_SERVER['QUERY_STRING'] == "json") {
     //  return output in json format
     echo json_encode($out);
 }
-
