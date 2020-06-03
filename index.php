@@ -18,7 +18,7 @@ foreach($scripts as $script){
         case 'js':
             exec("node ".$script_location,  $output);
         case 'php':
-            exec("php ".$script_location,  $output);
+            exec("php ".$script_location,  $output);//
         break;
     }
 
@@ -35,10 +35,10 @@ foreach($scripts as $script){
     $intern->language = $matches[0][3];
     array_push($out, $intern);
     if(count($full_match[0]) == 1 ){
-        $intern->status= "pass";
+        $intern->status= "pass";////passed verification
     }
     else{
-        $intern->status ="failed";
+        $intern->status ="failed";////failed verification
     }
     
 }
