@@ -16,7 +16,7 @@ foreach($scripts as $script){
              exec("python3 ".$script_location, $output, $return_val);
         break; 
         case 'js':
-            exec("node ".$script_location .' 2>&12',  $output, $return_val);
+            exec("heroku/nodejs ".$script_location,  $output, $return_val);
         case 'php':
             exec("php ".$script_location,  $output, $return_val);
         break;
