@@ -6,6 +6,9 @@ $scripts = array_splice($scripts_init, 2); // the first two index contain "." an
 $out = [];
 
 //loop through all files in directory and run based on file extension
+$total=0;
+$faild=0;
+$passed=0;
 foreach($scripts as $script){
     $matches = [];
     $script_location ="scripts/".$script;
@@ -37,16 +40,26 @@ foreach($scripts as $script){
     array_push($out, $intern);
     if(count($full_match[0]) == 1 ){
         $intern->status= "pass";
+        $passed+=1;
     }
     else{
         $intern->status ="failed";
+        $failed+=1;
     }
-    
+    $total+=1;
 }
 
 // in the given task it was stated that the json will be gotten through index.php?json..hence the code below
 if ($_SERVER['QUERY_STRING'] == "json") {
     //  return output in json format
     echo json_encode($out);
+}else{
+    echo "waiting for a cool design to display or result";
+    echo '<br>';
+    echo "Total Submit: ".$total;
+    echo '<br>';
+    echo "Total Pass: ".$passed;
+    echo '<br>';
+    echo "Total Failed: ".$faild;
 }
 
