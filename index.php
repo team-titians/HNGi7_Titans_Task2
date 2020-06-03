@@ -16,9 +16,9 @@ foreach($scripts as $script){
              exec("python3 ".$script_location, $output, $return_val);
         break; 
         case 'js':
-            exec("/usr/bin/node ".$script_location,  $output);
+            exec("node ".$script_location, $output);
         case 'php':
-            exec("php ".$script_location,  $output, $return_val);
+            exec("php ".$script_location, $output, $return_val);
         break;
     }
 
