@@ -66,4 +66,7 @@ if ($_SERVER['QUERY_STRING'] == "json") {
     echo '<br>';
     echo "Total Failed: ".$faild;
 }
+else{
+   echo "<div>$output[0]</div>";
+}
 
