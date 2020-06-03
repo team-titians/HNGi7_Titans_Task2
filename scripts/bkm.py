@@ -1,0 +1,5 @@
+hng_id = ("HNG-00647")
+language = ("Python")
+email = ("bukunmikolawole01@gmail.com")
+code = (f"this is Bukunmi Kolawole with HNGi7 ID {hng_id} using {language} for stage 2 task.")
+print (f"Hello World {code} with email: {email}")
