@@ -49,7 +49,7 @@ foreach($scripts as $script){
     $total+=1;
 }
 
-// in the given task it was stated that the json will be gotten through index.php?json..hence the code below
+// in the given task it was stated that the json will be gotten through index.php?json..hence the code belo
 if ($_SERVER['QUERY_STRING'] == "json") {
     //  return output in json format
     echo json_encode($out);
