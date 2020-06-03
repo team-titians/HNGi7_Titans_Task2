@@ -1,6 +1,10 @@
-const name = "IGHURE OGHENETEGA";
-const id = "HNG-01633";
-const email = "Ohenetegafrancis@gmail.com";
-const language = "Javascript";
+const Details = () => {
+	const name = "Ighure oghenetega";
+	const id = "HNG-01633";
+	const email = "oghenetegafrancis@gmail.com";
+	const language = "javascript";
 
-console.log(`Hello World, this is ${name} with HNGI7 ID ${id} and email ${email} using ${language} for stage 2 task`)
+	return `Hello World, this is ${name} with HNGi7 ID ${id} and email ${email} using javascript for stage 2 task`
+}
+
+console.log(Details())
