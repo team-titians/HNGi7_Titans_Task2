@@ -1,21 +1,24 @@
 <h1> HNGi-7 || Team-Titans || Task 2</h1>
 
 <h2>Task 2 || Contents</h2>
-    <a href='#clone_a_repo'>How To Clone A Repositrory</a><br/>
+    <a href='#clone_a_repo'>How To Fork A Repositrory</a><br/>
     <a href='#build_your_script'>How To Build Your Script</a><br/>
     <a href='#test_your_script'>How To Test Your Script</a><br/>
     <a href='#commit_your_changes'>How To Commit Your Changes</a><br/>
 
 <h3></h3>
 
-<h2 id='clone_a_repo'>Task 2 || How To Clone A Repositrory</h2>
+<h2 id='clone_a_repo'>Task 2 || How To Fork A Repositrory</h2>
     <p>
         <ul>
             <li>
                First, open the <a href='https://github.com/team-titians/HNGi7_Titans_Task2'>github repository</a>
             </li>
             <li>
-               Click on <code>clone or download</code> to get the link <code>https://github.com/team-titians/HNGi7_Titans_Task2.git</code>
+               At the Top-Right corner of the screen(same line with the repository name), Click on <code>Fork</code>. This will take you toyour github account and create a copy of the repository in your github account.
+            </li>
+            <li>
+               On your account, Click on <code>clone or download</code> to get a link like this <code>https://github.com/<your_github_username>/HNGi7_Titans_Task2.git</code>
             </li>
             <li>
                 Open the <code>htdocs</code> folder in the <code>xampp</code> in the root directory.<br/>
@@ -27,7 +30,7 @@
             </li>
             <li>
                On your terminal and run this command in your terminal <br/>
-               <code>git clone https://github.com/team-titians/HNGi7_Titans_Task2.git</code><br/>
+               <code>git clone ( the_copied_link_from_your_github_account like this:: https://github.com/<your_github_username>/HNGi7_Titans_Task2.git )</code><br/>
                Note: Ensure the Terminal opened in the HNG folder.
             </li>
             <li>
@@ -37,7 +40,7 @@
                 <a href='https://www.youtube.com/watch?v=cJqyFmIEu1M'>Learning with HNG</a>
             </li>
             <li>
-               <a href='https://www.youtube.com/watch?v=09wR8kYT3t8'>Free Code Camp</a>
+               <a href='https://www.youtube.com/watch?v=f5grYMXbAV0'>Data School</a>
             </li>
             <span style="color:red">Note: Whatever you do, do not tamper with the index.php file</span>
         </ul>  
@@ -138,6 +141,11 @@
                 After <a href='#test_your_script'>testing the script</a>. 
             </li>
             <li>
+               Open the on the repository folder(This should look like this
+               <code><your_PC_name>@DESKTOP-P7FH7QG MINGW64 /c/xampp/htdocs/HNG/HNGi7_Titans_Task2 (master)
+$</code>)
+            </li>
+            <li>
                Kindly, watch any of these YouTube Videos below
             </li>
             <li>
@@ -146,7 +154,7 @@
             <li>
                <a href='https://www.youtube.com/watch?v=JXM7MO2GgGg&vl=id'>Free Code Camp</a>
             </li>
-            <li>Always confirm your commits on the <a href='https://github.com/team-titians/HNGi7_Titans_Task2'>github repository</a>.</li>
+            <li>Always confirm your commits on the github repository in your github account.</li>
             <span style="color:red">Note: Whatever you do, do not tamper with the index.php file</span>
         </ul>  
     </p>
