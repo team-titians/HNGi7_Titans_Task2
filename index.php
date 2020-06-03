@@ -9,35 +9,39 @@ $out = [];
 foreach($scripts as $script){
     $matches = [];
     $script_location ="scripts/".$script;
-
     $temp_value="";
+    $output =[];
     switch(pathinfo($script)['extension']){
         case 'py':
-             $temp_value = exec("python ".$script_location);
+             exec("python ".$script_location, $output);
         break; 
         case 'js':
-            $temp_value = exec("node ".$script_location, $output);
-        break;
+            exec("node ".$script_location,  $output);
         case 'php':
-            $temp_value = exec("php ".$script_location, $output);
+            exec("php ".$script_location,  $output);
         break;
     }
-    
-    // get an array of detail for a user using regular expression 
 
-    $processed = explode(' ', str_replace(['Hello World, this is ', ' with HNGi7 ID', ' using', ' for stage 2 task', '.'], '', $temp_value));
-    $len = count($processed);
-    
+    $full_match=[];
+    preg_match_all("/(?<=this is)(.*)(?=with)|(?<=ID)(.*)(?=and)|(?<=email)(.*)(?=using)|(?<=using)(.*)(?=for)/", $output[0], $matches);
+    preg_match_all("/Hello World, this is(.*)with HNGi7 ID(.*)and email(.*)using(.*)for stage 2 task/",$output[0], $full_match);
     $intern = new stdClass();
-    $intern->language = array_pop($processed); 
-    $intern->id = array_pop($processed); 
-    $intern->name = implode(' ', $processed); 
-
-    var_dump(json_encode($intern));
-    // array_push($out, $intern);
-
+    
+    $intern->file= $script;
+    $intern->output = $output[0];
+    $intern->name = $matches[0][0];
+    $intern->id = $matches[0][1];
+    $intern->email = $matches[0][2];
+    $intern->language = $matches[0][3];
+    array_push($out, $intern);
+    if(count($full_match[0]) == 1 ){
+        $intern->status= "pass";
+    }
+    else{
+        $intern->status ="failed";
+    }
+    
 }
-
 
 // in the given task it was stated that the json will be gotten through index.php?json..hence the code below
 if ($_SERVER['QUERY_STRING'] == "json") {
