@@ -7,7 +7,7 @@ $out = [];
 
 //loop through all files in directory and run based on file extension
 $total=0;
-$faild=0;
+$failed=0;
 $passed=0;
 foreach($scripts as $script){
     $matches = [];
@@ -64,6 +64,6 @@ if ($_SERVER['QUERY_STRING'] == "json") {
     echo '<br>';
     echo "Total Passed: ".$passed;
     echo '<br>';
-    echo "Total Failed: ".$faild;
+    echo "Total Failed: ".$failed;
 }
 
