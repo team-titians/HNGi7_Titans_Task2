@@ -1,5 +1,5 @@
-//There are easier ways to do this but we were aske to be unique so I used ES6 class
-//First declare a class
+//There are easier ways to do this but we were asked to be unique so I used ES6 class
+//First declare a class with constructor
 class Details {
     constructor(name, id, language, email) {
       (this.name = name),
