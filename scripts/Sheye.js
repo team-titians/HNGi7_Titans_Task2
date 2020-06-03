@@ -5,6 +5,6 @@ const test = () => {
   const lang = 'JavaScript';
   const eMail = 'seyepelumi@gmail.com';
   return `Hello World, this is ${fullName} with HNGi7 ID ${hngId} and email ${eMail} using ${lang} for stage 2 task`
-};
+}
 // Calling the Function
-console.log(test()););
+console.log(test())
