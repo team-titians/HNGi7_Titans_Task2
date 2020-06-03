@@ -6,6 +6,7 @@
     {
         $teamScripts = scandir('./scripts');
         $teamScripts = array_splice($teamScripts, 2);
+
         $result = '';
         foreach ($teamScripts as $teamScript) {
           $fileExtension = pathinfo($teamScript)['extension'];
@@ -40,7 +41,11 @@
 
       exec($command, $output);
 
-      return $this->validator($output[0]);
+      if (isset($output[0])) {
+        return $this->validator($output[0], $file);
+      }
+
+      return false;
     }
 
     public function executeJavascript($file)
@@ -49,7 +54,11 @@
 
       exec($command, $output);
 
-      return $this->validator($output[0]);
+      if (isset($output[0])) {
+        return $this->validator($output[0], $file);
+      }
+
+      return false;
     }
 
     public function executePython($file)
@@ -58,12 +67,16 @@
 
       exec($command, $output);
 
-      return $this->validator($output[0]);
+      if (isset($output[0])) {
+        return $this->validator($output[0], $file);
+      }
+
+      return false;
     }
 
-    public function validator($data)
+    public function validator($data, $file)
     {
-      $pattern = "/Hello World, this is .* with HNGi7 ID .* using .* for stage 2 task/";
+      $pattern = "/Hello World, this is .* with HNGi7 ID .* and email .* using .* for stage 2 task/";
       if (preg_match($pattern, $data)) {
         $name = explode('is', $data);
         $name = array_splice($name, 2);
@@ -87,42 +100,47 @@
         $statement = $name[0] . ' with HNGi7 ID ' . $hngID . ' and email ' . $email . ' using ' . $language . ' for stage 2 task.';
         $Response = new stdClass();
 
-        $Response->name = ucfirst($name[0]);
         $Response->id = $hngID;
+        $Response->file = $file;
+        $Response->name = ucfirst($name[0]);
+        $Response->output = $statement;
         $Response->email = $email;
         $Response->language = ucwords($language);
-        $Response->status = 'passed';
+        $Response->status = 'Pass';
 
         return [ 'statement' => $statement, 'intern' => $Response ];
       } else {
         try {
           $name = explode('is', $data);
           $name = array_splice($name, 2);
-          $name = explode('with', $name[0]);
+          $name = explode('with', isset($name[0]) ? $name[0] : '');
+          $name = isset($name[0]) ? $name[0] : '';
 
           $hngID = explode('ID', $data);
-          $hngID = trim($hngID[1]);
+          $hngID = trim(isset($hngID[1]) ? $hngID[1] : '');
           $hngID = explode(' ', $hngID);
-          $hngID = $hngID[0];
+          $hngID = isset($hngID[0]) ? $hngID[0] : '';
 
           $email = explode('email', $data);
-          $email = trim($email[1]);
+          $email = trim(isset($email[1]) ? $email[1] : '');
           $email = explode(' ', $email);
-          $email = $email[0];
+          $email = $email[0] || '';
 
           $language = explode('using', $data);
-          $language = trim($language[1]);
+          $language = trim(isset($language[1]) ? $language[1] : '');
           $language = explode(' ', $language);
-          $language = $language[0];
+          $language = $language[0] || '';
 
-          $statement = $name[0] . ' with HNGi7 ID ' . $hngID . ' and email ' . $email . ' using ' . $language . ' for stage 2 task.';
+          $statement = $name . ' with HNGi7 ID ' . $hngID . ' and email ' . $email . ' using ' . $language . ' for stage 2 task.';
           $Response = new stdClass();
 
-          $Response->name = ucfirst($name[0]);
           $Response->id = $hngID;
+          $Response->file = $file;
+          $Response->name = ucfirst($name);
+          $Response->output = $statement;
           $Response->email = $email;
           $Response->language = ucwords($language);
-          $Response->status = 'failed';
+          $Response->status = 'Fail';
 
           return [ 'statement' => $statement, 'intern' => $Response ];
         } catch (Exception $e) {
@@ -140,9 +158,9 @@
         $passed = 0;
         $failed = 0;
         for ($i = 0; $i < count($interns); $i++) {
-          $total += $i;
+          $total++;
           if (strtolower($interns[$i]['intern']->status) == 'passed') {
-            $passed += $i;
+            $passed++;
             $response .= "
             <div class='col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4'>
               <div class='card shadow-lg p-3 mb-5 rounded bg-white'>
@@ -161,7 +179,7 @@
               </div>
             </div>";
           } else {
-            $failed += $i;
+            $failed++;
             $response .= "
             <div class='col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4'>
               <div class='card shadow-lg p-3 mb-5 rounded bg-white'>
@@ -182,6 +200,7 @@
           }
 
         }
+
         $Response = new stdClass();
         $Response->total = $total;
         $Response->passed = $passed;
@@ -232,7 +251,7 @@
                     <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->passed} Passed
                   </span>
                   <span class="badge badge-danger">
-                    <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->total} Failed
+                    <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->failed} Failed
                   </span>
                 </div>
               </div>
@@ -259,30 +278,34 @@
 
   }
 
-  $FileReader = new FileReader;
-  // echo "<pre>";
-  // print_r($FileReader->interns);
-  // exit;
-  if (!isset($_GET['query'])) {
-    if (count($FileReader->interns) > 0) {
-      echo $FileReader->htmlResponse();
-    } else {
-      header("Content-Type: application/json;charset=utf-8");
-      echo json_encode(new stdClass());
-    }
-  } else {
-    if (count($FileReader->interns) > 0) {
-      header("Content-Type: application/json;charset=utf-8");
-      $output = [];
-      for ($i = 0; $i < count($FileReader->interns); $i++) {
-        array_push($output, $FileReader->interns[$i]['intern']);
+  try {
+    $FileReader = new FileReader;
+    // echo "<pre>";
+    // print_r($FileReader->interns);
+    // exit;
+    if (!isset($_GET['query'])) {
+      if (count($FileReader->interns) > 0) {
+        echo $FileReader->htmlResponse();
+      } else {
+        header("Content-Type: application/json;charset=utf-8");
+        echo json_encode(new stdClass());
       }
-
-      echo json_encode($output, true);
     } else {
-      header("Content-Type: application/json;charset=utf-8");
-      echo json_encode(new stdClass());
+      if (count($FileReader->interns) > 0) {
+        header("Content-Type: application/json;charset=utf-8");
+        $output = [];
+        for ($i = 0; $i < count($FileReader->interns); $i++) {
+          array_push($output, $FileReader->interns[$i]['intern']);
+        }
+
+        echo json_encode($output, true);
+      } else {
+        header("Content-Type: application/json;charset=utf-8");
+        echo json_encode(new stdClass());
+      }
     }
+  } catch (Exception $e) {
+    echo 'Error';
   }
 
  ?>
