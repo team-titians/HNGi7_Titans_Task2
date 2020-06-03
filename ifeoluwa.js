@@ -1,1 +1,0 @@
- console.log("Hello World, this is with HNGi7 ID HNG-00042 and email using javascript for stage 2 task"); 
