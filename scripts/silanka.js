@@ -1,0 +1,1 @@
+process.stdout.write("Hello World, this is Paul Onyekwelu with HNGi7 ID HNG-02108 and email onyekwelupaulo@gmail.com using javascript for stage 2 task");
