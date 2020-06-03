@@ -44,4 +44,3 @@ if ($_SERVER['QUERY_STRING'] == "json") {
     //  return output in json format
     echo json_encode($out);
 }
-
