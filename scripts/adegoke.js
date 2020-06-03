@@ -5,7 +5,7 @@ const details = {
     language_used: "Javascript" 
 }
 
-let message = "Hello World!, my name is" + details.fullname + " with HNG ID of " + details.intern_id + " and email " + details.email + ", using " + details.language_used 
+let message = "Hello World!, my name is " + details.fullname + " with HNG ID of " + details.intern_id + " and email " + details.email + ", using " + details.language_used 
 + " programing language for HNG Task 2";
 
 console.log(message);
