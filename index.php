@@ -52,7 +52,8 @@ foreach($scripts as $script){
 // in the given task it was stated that the json will be gotten through index.php?json..hence the code below
 if ($_SERVER['QUERY_STRING'] == "json") {
     //  return output in json format
-    echo json_encode($out);
+    header('Content-Type: application/json');
+    echo json_encode($out, JSON_PRETTY_PRINT);
 }else{
     ob_flush();
     flush();
