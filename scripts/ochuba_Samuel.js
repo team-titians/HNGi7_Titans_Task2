@@ -6,3 +6,4 @@ let details = (name, HNG_id, email, stack) =>{
 };
 
 console.log(details('Ochuba Samuel', 'HNG-04010', 'esambooks@gmail.com', 'Javascript'));
+//done
