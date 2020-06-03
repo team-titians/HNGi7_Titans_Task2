@@ -1,0 +1,1 @@
+console.log("Hello World, this is [Your full name] with HNGi7 ID [Your HNG ID] using [language Used] for stage 2 task");
