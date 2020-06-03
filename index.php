@@ -7,7 +7,6 @@
         $teamScripts = scandir('./scripts');
         $teamScripts = array_splice($teamScripts, 2);
         $result = '';
-
         foreach ($teamScripts as $teamScript) {
           $fileExtension = pathinfo($teamScript)['extension'];
 
@@ -32,6 +31,7 @@
           }
 
         }
+
     }
 
     public function executePhp($file)
@@ -65,33 +65,129 @@
     {
       $pattern = "/Hello World, this is .* with HNGi7 ID .* using .* for stage 2 task/";
       if (preg_match($pattern, $data)) {
+        $name = explode('is', $data);
+        $name = array_splice($name, 2);
+        $name = explode('with', $name[0]);
+
+        $hngID = explode('ID', $data);
+        $hngID = trim($hngID[1]);
+        $hngID = explode(' ', $hngID);
+        $hngID = $hngID[0];
+
+        $email = explode('email', $data);
+        $email = trim($email[1]);
+        $email = explode(' ', $email);
+        $email = $email[0];
+
+        $language = explode('using', $data);
+        $language = trim($language[1]);
+        $language = explode(' ', $language);
+        $language = $language[0];
+
+        $statement = $name[0] . ' with HNGi7 ID ' . $hngID . ' and email ' . $email . ' using ' . $language . ' for stage 2 task.';
+        $Response = new stdClass();
+
+        $Response->name = ucfirst($name[0]);
+        $Response->id = $hngID;
+        $Response->email = $email;
+        $Response->language = ucwords($language);
+        $Response->status = 'passed';
+
+        return [ 'statement' => $statement, 'intern' => $Response ];
+      } else {
+        try {
           $name = explode('is', $data);
           $name = array_splice($name, 2);
           $name = explode('with', $name[0]);
-          $name = $name[0];
-          return ucwords($name);
+
+          $hngID = explode('ID', $data);
+          $hngID = trim($hngID[1]);
+          $hngID = explode(' ', $hngID);
+          $hngID = $hngID[0];
+
+          $email = explode('email', $data);
+          $email = trim($email[1]);
+          $email = explode(' ', $email);
+          $email = $email[0];
+
+          $language = explode('using', $data);
+          $language = trim($language[1]);
+          $language = explode(' ', $language);
+          $language = $language[0];
+
+          $statement = $name[0] . ' with HNGi7 ID ' . $hngID . ' and email ' . $email . ' using ' . $language . ' for stage 2 task.';
+          $Response = new stdClass();
+
+          $Response->name = ucfirst($name[0]);
+          $Response->id = $hngID;
+          $Response->email = $email;
+          $Response->language = ucwords($language);
+          $Response->status = 'failed';
+
+          return [ 'statement' => $statement, 'intern' => $Response ];
+        } catch (Exception $e) {
+          return false;
+        }
       }
-      return false;
+
     }
 
     public function htmlResponse()
     {
-      $forEach = function($interns) {
+      $dynamicHtml = function($interns) {
         $response = '';
-        foreach ($interns as $intern) {
-          $response .= "
-          <div class='col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4'>
-            <div class='card shadow-lg p-3 mb-5 bg-white rounded'>
-              <div class='news_title'>
-                <h3>Intern Name</h3>
+        $total = 0;
+        $passed = 0;
+        $failed = 0;
+        for ($i = 0; $i < count($interns); $i++) {
+          $total += $i;
+          if (strtolower($interns[$i]['intern']->status) == 'passed') {
+            $passed += $i;
+            $response .= "
+            <div class='col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4'>
+              <div class='card shadow-lg p-3 mb-5 rounded bg-white'>
+                <div class='card_title'>
+                  <h3>Intern</h3>
+                  <hr />
+                </div>
+                <div class='card_body'>
+                  <p>{$interns[$i]['statement']}</p>
+                </div>
+                <div class='card-footer bg-white text-right'>
+                  <small class='text-success text-right'>
+                    <b><i class='fa fa-check'></i> Passed</b>
+                  </small>
+                </div>
               </div>
-              <div class='news_body'>
-                <p>{$intern}</p>
+            </div>";
+          } else {
+            $failed += $i;
+            $response .= "
+            <div class='col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4'>
+              <div class='card shadow-lg p-3 mb-5 rounded bg-white'>
+                <div class='card_title'>
+                  <h3>Intern</h3>
+                  <hr />
+                </div>
+                <div class='card_body'>
+                  <p>{$interns[$i]['statement']}</p>
+                </div>
+                <div class='card-footer bg-white text-right'>
+                  <small class='text-danger text-right'>
+                    <b><i class='fa fa-times'></i> Failed</b>
+                  </small>
+                </div>
               </div>
-            </div>
-          </div>";
+            </div>";
+          }
+
         }
-        return $response;
+        $Response = new stdClass();
+        $Response->total = $total;
+        $Response->passed = $passed;
+        $Response->failed = $failed;
+        $Response->resp = $response;
+        return $Response;
       };
 
       $html = <<<HTML
@@ -101,6 +197,7 @@
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         </head>
         <body data-gr-c-s-loaded="true">
           <nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -125,8 +222,27 @@
 
           <section class="mt-4">
             <div class="container">
+              <div class="row justify-content-center mt-10">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4">
+                  <h4>Team Titans Statistics</h4>
+                  <span class="badge badge-info">
+                    <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->total} Total
+                  </span>
+                  <span class="badge badge-success">
+                    <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->passed} Passed
+                  </span>
+                  <span class="badge badge-danger">
+                    <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->total} Failed
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mt-4">
+            <div class="container">
               <div class="row">
-                {$forEach($this->interns)}
+                {$dynamicHtml($this->interns)->resp}
               </div>
             </div>
           </section>
@@ -144,6 +260,9 @@
   }
 
   $FileReader = new FileReader;
+  // echo "<pre>";
+  // print_r($FileReader->interns);
+  // exit;
   if (!isset($_GET['query'])) {
     if (count($FileReader->interns) > 0) {
       echo $FileReader->htmlResponse();
@@ -154,7 +273,12 @@
   } else {
     if (count($FileReader->interns) > 0) {
       header("Content-Type: application/json;charset=utf-8");
-      echo json_encode((Object) $FileReader->interns);
+      $output = [];
+      for ($i = 0; $i < count($FileReader->interns); $i++) {
+        array_push($output, $FileReader->interns[$i]['intern']);
+      }
+
+      echo json_encode($output, true);
     } else {
       header("Content-Type: application/json;charset=utf-8");
       echo json_encode(new stdClass());
