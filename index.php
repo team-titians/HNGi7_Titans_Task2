@@ -144,7 +144,14 @@
   }
 
   $FileReader = new FileReader;
-  if (isset($_GET['query'])) {
+  if (!isset($_GET['query'])) {
+    if (count($FileReader->interns) > 0) {
+      echo $FileReader->htmlResponse();
+    } else {
+      header("Content-Type: application/json;charset=utf-8");
+      echo json_encode(new stdClass());
+    }
+  } else {
     if (count($FileReader->interns) > 0) {
       header("Content-Type: application/json;charset=utf-8");
       echo json_encode((Object) $FileReader->interns);
@@ -152,12 +159,6 @@
       header("Content-Type: application/json;charset=utf-8");
       echo json_encode(new stdClass());
     }
-  } else {
-    if (count($FileReader->interns) > 0) {
-      echo $FileReader->htmlResponse();
-    } else {
-      header("Content-Type: application/json;charset=utf-8");
-      echo json_encode(new stdClass());
-    }
   }
+
  ?>
