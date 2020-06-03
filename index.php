@@ -13,19 +13,19 @@ foreach($scripts as $script){
     $output =[];
     switch(pathinfo($script)['extension']){
         case 'py':
-            escapeshellcmd("python3 ".$script_location, $output);
+             exec("python3 ".$script_location, $output, $return_val);
         break; 
         case 'js':
-            escapeshellcmd("node ".$script_location,  $output);
+            exec("node ".$script_location,  $output, $return_val);
         case 'php':
-            escapeshellcmd("php ".$script_location,  $output);
+            exec("php ".$script_location,  $output, $return_val);
         break;
     }
 
     $full_match=[];
     preg_match_all("/(?<=this is)(.*)(?=with)|(?<=ID)(.*)(?=and)|(?<=email)(.*)(?=using)|(?<=using)(.*)(?=for)/", $output[0], $matches);
     preg_match_all("/Hello World, this is(.*)with HNGi7 ID(.*)and email(.*)using(.*)for stage 2 task/",$output[0], $full_match);
-    //echo $output[0];
+    echo $output[0];
     $intern = new stdClass();
     
     $intern->file= $script;
