@@ -1,0 +1,1 @@
+console.log("Hello World, this is Afiari marvellous with HNGi7 ID HNG-00754 and email marvelolisa@gmail.com using javascript for stage 2 task");
