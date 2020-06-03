@@ -1,5 +1,5 @@
 
- return helloMsg =()=>{
+ const helloMsg =()=>{
     let email = "emilyudy1912@gmail.com";
     let name = "Emilia Anochirionye";
     let HNGId = " HNG-03561";
