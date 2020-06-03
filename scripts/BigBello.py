@@ -1,38 +1,31 @@
-def main(): 
-   intro = "Hello World! "
-   full_name= " Malcom Biggy Bello "
-   HNGi7_ID=" HNGi7 ID: HNG-02832 "
-   email=' email: bauite.x3@gmail.com '  
-   language = " language: Python3 "  
-   full_message = print(
-                  intro +
-                  'this is '+
-                  full_name+ 
-                  HNGi7_ID+ 
-                  email+
-                  ' using '+ 
-                  language+ 
-                  " for stage 2 task"
-                    )
-   
-   return full_message
- 
+def main():  
+   full_name= "Malcom Biggy Bello"
+   HNGi7_ID="HNG-02832"
+   email='bauite.x3@gmail.com'  
+   using = "Python3"  
+   print(
+         "Hello World!, "+
+         'this is '+ full_name+
+         " with HNGi7 ID "+HNGi7_ID+ 
+         " and email " + email+
+         ' using '+using+ 
+         " for stage 2 task"
+         ) 
 if __name__ == "__main__":
    main() 
 else:
-   intro = "Hello World! "
-   full_name= " Malcom Biggy Bello "
-   HNGi7_ID=" HNGi7 ID: HNG-02832 "
-   email=' email: bauite.x3@gmail.com '  
-   language = " language: Python3 "  
-   print(intro +
-         'this is '+
-         full_name+ 
-         HNGi7_ID+ 
-         email+
-         ' using '+ 
-         language+ 
+   full_name= "Malcom Biggy Bello"
+   HNGi7_ID="HNG-02832"
+   email='bauite.x3@gmail.com'  
+   using = "Python3"  
+   print(
+         "Hello World!, "+
+         'this is '+ full_name+
+         " with HNGi7 ID "+HNGi7_ID+ 
+         " and email " + email+
+         ' using '+using+ 
          " for stage 2 task"
-         )
+         ) 
+
 
  
