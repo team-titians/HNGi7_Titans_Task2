@@ -1,8 +1,9 @@
 <?php
   $name = "AFARAIT SULAIMON BOLA";
   $id = "HNG-01150";
-  $language = "PHP/LARAVEL";
   $email = "afaraitsulaimon@gmail.com";
+  $language = "PHP/LARAVEL";
+  
 
   $result = "Hello world, this is " . $name;
   $result .= " with HNGi7 ID  " . $id;
