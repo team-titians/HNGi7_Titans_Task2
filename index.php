@@ -54,6 +54,9 @@ if ($_SERVER['QUERY_STRING'] == "json") {
     //  return output in json format
     echo json_encode($out);
 }else{
+    ob_flush();
+    flush();
+    sleep(1);
     echo "waiting for a cool design to display or result";
     echo '<br>';
     echo "Total Submitted: ".$total;
