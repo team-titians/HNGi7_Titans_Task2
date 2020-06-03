@@ -56,9 +56,9 @@ if ($_SERVER['QUERY_STRING'] == "json") {
 }else{
     echo "waiting for a cool design to display or result";
     echo '<br>';
-    echo "Total Submit: ".$total;
+    echo "Total Submitted: ".$total;
     echo '<br>';
-    echo "Total Pass: ".$passed;
+    echo "Total Passed: ".$passed;
     echo '<br>';
     echo "Total Failed: ".$faild;
 }
