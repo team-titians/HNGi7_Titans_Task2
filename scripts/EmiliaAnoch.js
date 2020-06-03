@@ -4,5 +4,5 @@
  const name = "this is Emilia Anochirionye";
  const HNGId = "with HNGi7 ID: HNG-03561";
  const endingMsg = "using javascript for stage 2 task";
- var result = greetings.concat(name).concat(HNGId).concat(email).concat(endingMsg);
+ var result = greetings+" "+ name+" "+HNGId+" "+email+" "+endingMsg;
 console.log(result);
