@@ -4,7 +4,7 @@ def main():
    email='bauite.x3@gmail.com'  
    using = "Python3"  
    output=print(
-         "Hello World!, "+
+         "Hello World, "+
          'this is '+ name+
          " with HNGi7 ID "+ID+ 
          " and email " + email+
