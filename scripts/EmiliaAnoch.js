@@ -1,8 +1,9 @@
 
- const greetings = "Hello World";
- const email = "and email emilyudy1912@gmail.com";
- const name = "this is Emilia Anochirionye";
- const HNGId = "with HNGi7 ID: HNG-03561";
- const endingMsg = "using javascript for stage 2 task";
- var result = greetings+" "+ name+" "+HNGId+" "+email+" "+endingMsg;
+ 
+ let email = "emilyudy1912@gmail.com";
+ let name = "Emilia Anochirionye";
+ let HNGId = " HNG-03561";
+ let endingMsg = " javascript";
+ let result = "Hello World this is " + name + "with HNGi7 ID: "+HNGId+" and email "+email+" using"+endingMsg+"for stage 2 task";
+
 console.log(result);
