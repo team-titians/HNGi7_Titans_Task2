@@ -10,4 +10,4 @@ var profile = {
 };
 
 // Display some data from the object of my profile:
-   console.log (profile[showProfile]);
+   console.log (profile.showProfile);
