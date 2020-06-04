@@ -43,6 +43,7 @@ foreach($scripts as $script){
         $passed+=1;
     }
     else{
+        //I've changed from failed to fail
         $intern->status ="fail";
         $failed+=1;
     }
