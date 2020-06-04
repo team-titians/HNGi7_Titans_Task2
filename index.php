@@ -103,10 +103,10 @@ body{
 
 .bar-pass, .bar-fail{
   position: absolute;
-  bottom: 0;
+  bottom: 1px;
   width: 40px;
   color: black;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: bold;
   /* display: flex; */
   justify-content: center;
@@ -115,13 +115,15 @@ body{
 }
 
 .bar-div p{
-  transform: translateY(-30px);
+  transform: translate(-7px,-35px);
 }
 
 
 .bar-pass{
+  border-top: 6px solid #9ff691;
+  border-left: 16px solid #196619;
   background: #24a824c2;
-  left: 40px;
+  left: 35px;
   opacity: 0;
   animation-name: magicht;
   animation-fill-mode: forwards;
@@ -129,6 +131,8 @@ body{
 }
 
 .bar-fail{
+  border-top: 6px solid #f08c8c;
+  border-left: 16px solid #e02727c9;
   background: #e02727c9;
   left: 130px;
   opacity: 0;
