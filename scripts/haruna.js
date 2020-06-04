@@ -5,7 +5,7 @@ let language="JavaScript"
 
 
 const intern=()=>{
-  return `Hello world,this is ${name} with HNGi7 ID ${id} using ${language} for stage 2 task .`
+  return `Hello World,this is ${name} with HNGi7 ID ${id} using ${language} for stage 2 task`.
 }
 
 console.log(intern());
