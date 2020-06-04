@@ -398,13 +398,13 @@ tr.whoiam td:hover{
 
 
     $jsonForm = array(
-      "file"=>$files[$index],
-      "output"=> $withoutMial,
-      "name"=>$matches[0][0],
-      "id"=>$matches[0][1],
-      "email"=>$matches[0][2],
-      "language"=>$matches[0][3],
-      "status"=>$status
+      "file"=>trim($files[$index]),
+      "output"=> trim($withoutMial),
+      "name"=>trim($matches[0][0]),
+      "id"=>trim($matches[0][1]),
+      "email"=>trim($matches[0][2]),
+      "language"=>trim($matches[0][3]),
+      "status"=>trim($status)
     );
     array_push($titans, $jsonForm);
 
@@ -418,9 +418,9 @@ tr.whoiam td:hover{
       sleep(0.5);
       echo "<tr class='whoiam  $status' style='animation-delay: $anim'>";
       echo '<td>'. $num .'</td>';
-      echo '<td>'. $matches[0][0] .'</td>';
-      echo '<td>'. $withoutMial .'</td>';
-      echo '<td>'. $status .'</td>';
+      echo '<td>'. trim($matches[0][0]) .'</td>';
+      echo '<td>'. trim($withoutMial) .'</td>';
+      echo '<td>'. trim($status) .'</td>';
       echo '</tr>';
       // echo "<br/>";
     }
