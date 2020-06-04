@@ -238,7 +238,7 @@ tr th{
   padding: 10px;
   font-size: 1.1rem;
 }
-.failed{
+.fail{
   background-color: #e02727c9;
 }
 tr.whoiam td{
