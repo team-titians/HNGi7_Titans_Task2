@@ -428,7 +428,7 @@ foreach($scripts as $script){
 
 =======
     else{
-        $intern->status ="fail";
+        $intern->status ="failed";
         $failed+=1;
     }
     $total+=1;
