@@ -1,69 +1,311 @@
 <?php
+  class FileReader {
+    public $interns = [];
 
-// get al files from scirpts folder
-$scripts_init = scandir("scripts/");
-$scripts = array_splice($scripts_init, 2); // the first two index contain "." and ".." which is not needed
-$out = [];
+    public function __construct()
+    {
+        $teamScripts = scandir('./scripts');
+        $teamScripts = array_splice($teamScripts, 2);
 
-//loop through all files in directory and run based on file extension
-$total=0;
-$faild=0;
-$passed=0;
-foreach($scripts as $script){
-    $matches = [];
-    $script_location ="scripts/".$script;
-    $temp_value="";
-    $output =[];
-    switch(pathinfo($script)['extension']){
-        case 'py':
-             exec("python3 ".$script_location, $output, $return_val);
-        break; 
-        case 'js':
-            exec("node ".$script_location, $output, $return_val);
-        case 'php':
-            exec("php ".$script_location, $output, $return_val);
-        break;
+        $result = '';
+        foreach ($teamScripts as $teamScript) {
+          $fileExtension = pathinfo($teamScript)['extension'];
+
+          $teamScript = './scripts/' . $teamScript;
+          switch ($fileExtension) {
+            case 'php':
+                $result = $this->executePhp($teamScript);
+              break;
+            case 'js':
+                $result = $this->executeJavascript($teamScript);
+              break;
+            case 'py':
+                $result = $this->executePython($teamScript);
+              break;
+            default:
+              // Do Nothing.........
+              break;
+          }
+
+          if ($result) {
+            array_push($this->interns, $result);
+          }
+
+        }
+
     }
 
-    $full_match=[];
-    preg_match_all("/(?<=this is)(.*)(?=with)|(?<=ID)(.*)(?=and)|(?<=email)(.*)(?=using)|(?<=using)(.*)(?=for)/", $output[0], $matches);
-    preg_match_all("/Hello World, this is(.*)with HNGi7 ID(.*)and email(.*)using(.*)for stage 2 task/",$output[0], $full_match);
-    //echo $output[0];
-    $intern = new stdClass();
-    
-    $intern->file= $script;
-    $intern->output = $output[0];
-    $intern->name = $matches[0][0];
-    $intern->id = $matches[0][1];
-    $intern->email = $matches[0][2];
-    $intern->language = $matches[0][3];
-    array_push($out, $intern);
-    if(count($full_match[0]) == 1 ){
-        $intern->status= "pass";
-        $passed+=1;
-    }
-    else{
-        $intern->status ="failed";
-        $failed+=1;
-    }
-    $total+=1;
-}
+    public function executePhp($file)
+    {
+      $command = 'php -f ' . $file;
 
-// in the given task it was stated that the json will be gotten through index.php?json..hence the code below
-if ($_SERVER['QUERY_STRING'] == "json") {
-    //  return output in json forma
-    header('Content-Type: application/json');
-    echo json_encode($out, JSON_PRETTY_PRINT);
-}else{
-    ob_flush();
-    flush();
-    sleep(1);
-    echo "waiting for a cool design to display or result";
-    echo '<br>';
-    echo "Total Submitted: ".$total;
-    echo '<br>';
-    echo "Total Passed: ".$passed;
-    echo '<br>';
-    echo "Total Failed: ".$faild;
-}
+      exec($command, $output);
 
+      if (isset($output[0])) {
+        return $this->validator($output[0], $file);
+      }
+
+      return false;
+    }
+
+    public function executeJavascript($file)
+    {
+      $command = 'node  ' . $file;
+
+      exec($command, $output);
+
+      if (isset($output[0])) {
+        return $this->validator($output[0], $file);
+      }
+
+      return false;
+    }
+
+    public function executePython($file)
+    {
+      $command = 'python ' . $file;
+
+      exec($command, $output);
+
+      if (isset($output[0])) {
+        return $this->validator($output[0], $file);
+      }
+
+      return false;
+    }
+
+    public function validator($data, $file)
+    {
+      $pattern = "/Hello World, this is .* with HNGi7 ID .* and email .* using .* for stage 2 task/";
+      if (preg_match($pattern, $data)) {
+        $name = explode('is', $data);
+        $name = array_splice($name, 2);
+        $name = explode('with', $name[0]);
+
+        $hngID = explode('ID', $data);
+        $hngID = trim($hngID[1]);
+        $hngID = explode(' ', $hngID);
+        $hngID = $hngID[0];
+
+        $email = explode('email', $data);
+        $email = trim($email[1]);
+        $email = explode(' ', $email);
+        $email = $email[0];
+
+        $language = explode('using', $data);
+        $language = trim($language[1]);
+        $language = explode(' ', $language);
+        $language = $language[0];
+
+        $statement = $name[0] . ' with HNGi7 ID ' . $hngID . ' and email ' . $email . ' using ' . $language . ' for stage 2 task.';
+        $Response = new stdClass();
+
+        $Response->id = $hngID;
+        $Response->file = $file;
+        $Response->name = ucfirst($name[0]);
+        $Response->output = $statement;
+        $Response->email = $email;
+        $Response->language = ucwords($language);
+        $Response->status = 'Pass';
+
+        return [ 'statement' => $statement, 'intern' => $Response ];
+      } else {
+        try {
+          $name = explode('is', $data);
+          $name = array_splice($name, 2);
+          $name = explode('with', isset($name[0]) ? $name[0] : '');
+          $name = isset($name[0]) ? $name[0] : '';
+
+          $hngID = explode('ID', $data);
+          $hngID = trim(isset($hngID[1]) ? $hngID[1] : '');
+          $hngID = explode(' ', $hngID);
+          $hngID = isset($hngID[0]) ? $hngID[0] : '';
+
+          $email = explode('email', $data);
+          $email = trim(isset($email[1]) ? $email[1] : '');
+          $email = explode(' ', $email);
+          $email = $email[0] || '';
+
+          $language = explode('using', $data);
+          $language = trim(isset($language[1]) ? $language[1] : '');
+          $language = explode(' ', $language);
+          $language = $language[0] || '';
+
+          $statement = $name . ' with HNGi7 ID ' . $hngID . ' and email ' . $email . ' using ' . $language . ' for stage 2 task.';
+          $Response = new stdClass();
+
+          $Response->id = $hngID;
+          $Response->file = $file;
+          $Response->name = ucfirst($name);
+          $Response->output = $statement;
+          $Response->email = $email;
+          $Response->language = ucwords($language);
+          $Response->status = 'Fail';
+
+          return [ 'statement' => $statement, 'intern' => $Response ];
+        } catch (Exception $e) {
+          return false;
+        }
+      }
+
+    }
+
+    public function htmlResponse()
+    {
+      $dynamicHtml = function($interns) {
+        $response = '';
+        $total = 0;
+        $passed = 0;
+        $failed = 0;
+        for ($i = 0; $i < count($interns); $i++) {
+          $total++;
+          if (strtolower($interns[$i]['intern']->status) == 'pass') {
+            $passed++;
+            $response .= "
+            <div class='col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4'>
+              <div class='card shadow-lg p-3 mb-5 rounded bg-white'>
+                <div class='card_title'>
+                  <h3>Intern</h3>
+                  <hr />
+                </div>
+                <div class='card_body'>
+                  <p>{$interns[$i]['statement']}</p>
+                </div>
+                <div class='card-footer bg-white text-right'>
+                  <small class='text-success text-right'>
+                    <b><i class='fa fa-check'></i> Passed</b>
+                  </small>
+                </div>
+              </div>
+            </div>";
+          } else {
+            $failed++;
+            $response .= "
+            <div class='col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4'>
+              <div class='card shadow-lg p-3 mb-5 rounded bg-white'>
+                <div class='card_title'>
+                  <h3>Intern</h3>
+                  <hr />
+                </div>
+                <div class='card_body'>
+                  <p>{$interns[$i]['statement']}</p>
+                </div>
+                <div class='card-footer bg-white text-right'>
+                  <small class='text-danger text-right'>
+                    <b><i class='fa fa-times'></i> Failed</b>
+                  </small>
+                </div>
+              </div>
+            </div>";
+          }
+
+        }
+
+        $Response = new stdClass();
+        $Response->total = $total;
+        $Response->passed = $passed;
+        $Response->failed = $failed;
+        $Response->resp = $response;
+        return $Response;
+      };
+
+      $html = <<<HTML
+          <!DOCTYPE html>
+          <html lang="en"><head>
+          <title>Team Titans | Task 2</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        </head>
+        <body data-gr-c-s-loaded="true">
+          <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <div class="container">
+              <a class="navbar-brand text-white" href="#">Team Titans</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link text-white" href="">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="?query">Interns JSON</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <section class="mt-4">
+            <div class="container">
+              <div class="row justify-content-center mt-10">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4">
+                  <h4>Team Titans Statistics</h4>
+                  <span class="badge badge-info">
+                    <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->total} Total
+                  </span>
+                  <span class="badge badge-success">
+                    <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->passed} Passed
+                  </span>
+                  <span class="badge badge-danger">
+                    <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->failed} Failed
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mt-4">
+            <div class="container">
+              <div class="row">
+                {$dynamicHtml($this->interns)->resp}
+              </div>
+            </div>
+          </section>
+
+          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+        </body>
+      </html>
+      HTML;
+      return $html;
+    }
+
+  }
+
+  try {
+    $FileReader = new FileReader;
+    // echo "<pre>";
+    // print_r($FileReader->interns);
+    // exit;
+    if (!isset($_GET['query'])) {
+      if (count($FileReader->interns) > 0) {
+        echo $FileReader->htmlResponse();
+      } else {
+        header("Content-Type: application/json;charset=utf-8");
+        echo json_encode(new stdClass());
+      }
+    } else {
+      if (count($FileReader->interns) > 0) {
+        header("Content-Type: application/json;charset=utf-8");
+        $output = [];
+        for ($i = 0; $i < count($FileReader->interns); $i++) {
+          array_push($output, $FileReader->interns[$i]['intern']);
+        }
+
+        echo json_encode($output, true);
+      } else {
+        header("Content-Type: application/json;charset=utf-8");
+        echo json_encode(new stdClass());
+      }
+    }
+  } catch (Exception $e) {
+    echo 'Error';
+  }
+
+ ?>
