@@ -25,7 +25,12 @@
                 (<a href='https://www.apachefriends.org/download.html'>click here</a> to download xampp and follow this step after.)
             </li>
             <li>
-               Create a folder with <code>HNG</code> in the <code>htdocs</code> and open the gitbash Terminal here OR open this <code>HNG</code> folder in VSCode.<br/>
+                If you are using <code>lamp</code> navigate to <code>/var/www/html/</code> in the root  directory.<br/>
+                (<a href='https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04'>click here</a> for the installation process
+                or find a suitable procedure for your linux distro and follow this step after.)
+            </li>
+            <li>
+               Create a folder with <code>HNG</code> in the <code>htdocs</code> or <code>/var/www/html/</code> and open the gitbash Terminal here OR open this <code>HNG</code> folder in VSCode.<br/>
                (<a href='https://git-scm.com/downloads'>click here</a> to download git and follow this step after.)
             </li>
             <li>
@@ -34,7 +39,7 @@
                Note: Ensure the Terminal opened in the HNG folder.
             </li>
             <li>
-               Kindly, watch any of these YouTube Videos below for furher understanding
+               Kindly, watch any of these YouTube Videos below for further understanding
             </li>
             <li>
                 <a href='https://www.youtube.com/watch?v=cJqyFmIEu1M'>Learning with HNG</a>
@@ -113,10 +118,16 @@
                Open Xampp on your computer, and start Apache.
             </li>
             <li>
-                Simply copy and paste this on the browser <code>http://localhost/hng/HNGi7_Titans_Task2/</code>
+               On linux check if apache is running with <code>sudo service apache2 status</code> if not start apache.
+            </li>
+            <li>
+                Simply copy and paste this on the browser <code>http://localhost/HNG/HNGi7_Titans_Task2/ </code>
             </li>
             <li>
                 Scan through the output to confirm your script passed
+            </li>
+            <li>
+                Append <code>index.php?json</code> to the above url if you do not see a detailed results page.
             </li>
             <li>Commit and push the changes if the script passed the test.</li>
             <span style="color:red">Note: Whatever you do, do not tamper with the index.php file</span>
@@ -133,8 +144,8 @@
             </li>
             <li>
                Open the on the repository folder(This should look like this
-               <code><your_PC_name>@DESKTOP-P7FH7QG MINGW64 /c/xampp/htdocs/HNG/HNGi7_Titans_Task2 (master)
-$</code>)
+               <code><your_PC_name>@DESKTOP-P7FH7QG MINGW64 /c/xampp/htdocs/HNG/HNGi7_Titans_Task2 (master)$</code> ||
+               <code>root@user:/var/www/html/HNG/HNGi7_Titans_Task2$</code> on linux)
             </li>
             <li>
                Kindly, watch any of these YouTube Videos below

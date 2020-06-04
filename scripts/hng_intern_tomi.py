@@ -1,4 +1,4 @@
-name = "Bello Oluwatomisin"
+name = "Bello Oluwatomisin Oreoluwa"
 hngi7_id = "HNG-04743"
 language = "Python"
 email = "bello4aus@gmail.com"
