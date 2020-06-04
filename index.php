@@ -43,7 +43,7 @@ foreach($scripts as $script){
         $passed+=1;
     }
     else{
-        $intern->status ="fail";
+        $intern->status ="failed";
         $failed+=1;
     }
     $total+=1;
