@@ -10,4 +10,4 @@ function identity(fullName, hngId, email, language){
     console.log(introduction);
 }
 
-identity("Eluro Alex", "HNG-04877", "alexeluro@gmail.com", "JavaScript");
+identity("Eluro Alexander", "HNG-04877", "alexeluro@gmail.com", "JavaScript");
