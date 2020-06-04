@@ -373,7 +373,7 @@ tr.whoiam td:hover{
       echo "<tr class='whoiam  $status' style='animation-delay: $anim'>";
       echo '<td>'. $num .'</td>';
       echo '<td>'. $matches[0][0] .'</td>';
-      echo '<td>'. $output .'</td>';
+      echo '<td>'. $withoutMial .'</td>';
       echo '<td>'. $status .'</td>';
       echo '</tr>';
       // echo "<br/>";
