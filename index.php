@@ -2,6 +2,7 @@
 
 // get al files from scirpts folder
 $scripts_init = scandir("scripts/");
+echo ($scripts_init);
 $scripts = array_splice($scripts_init, 2); // the first two index contain "." and ".." which is not needed
 $out = [];
 
