@@ -21,7 +21,7 @@ body{
   flex-direction: column;
   position: fixed;
   top: 70px;
-  right: 10px;
+  right: 5px;
 }
 
 .breakdown{
@@ -127,7 +127,7 @@ body{
 }
 
 .bar-div{
-  width: 200px;
+  width: 220px;
   height: 250px;
   display: flex;
   justify-content: space-between;
@@ -139,8 +139,8 @@ body{
   /* margin-top: 50px; */
   background-image: url('https://i.ya-webdesign.com/images/graph-paper-background-png-4.png');
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  /* background-repeat: no-repeat; */
+  background-size: contain;
 }
 
 .bar-pass, .bar-fail{
@@ -204,6 +204,7 @@ table{
   border-radius:6px;
   display: relative;
   background-color: #eee;
+  width: 80vw;
   min-width: 80vw;
   padding: 10px;
 }
