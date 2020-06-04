@@ -4,6 +4,6 @@ hngi7_id = 'HNG-02341'
 lang_used = 'Python'
 
 message_to_print = 'Hello World, this is ' + full_name + ' with HNG ID '\
-                   + hngi7_id + ' and email ' + email + ' using ' + lang_used + ' for stage 2 task.'
+                   + hngi7_id + ' and email ' + email + ' using ' + lang_used + ' for stage 2 task'
 
 print(message_to_print)
