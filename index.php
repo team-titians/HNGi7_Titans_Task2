@@ -435,8 +435,7 @@ tr.whoiam td:hover{
         echo "<br/>";
       }
 
-  // print_r($pass);
-  // print_r($pass);
+
   $numfiles = $filesLength - 2;
 
   $failpercentage = round((($failed/$numfiles) * 100),2).'%';
@@ -451,7 +450,7 @@ tr.whoiam td:hover{
         echo "Total ".$numfiles;
       echo "</p>";
       echo "<span>";
-        echo "Passed :".$pass;
+        echo "Pass : ".$pass;
       echo "</span>";
       echo "<span>";
         echo "Failed :".$fail;
@@ -478,15 +477,10 @@ tr.whoiam td:hover{
 
 
 }
-  // function findOut(){
-  //
-  // }
+
 
   if($queries === "json"){
-    // header('Content-Type: application/json');
-    // ob_flush();
-    // flush();
-    // sleep(1);
+
     $fineJson = json_encode($titans, JSON_PRETTY_PRINT);
     ob_flush();
     flush();
