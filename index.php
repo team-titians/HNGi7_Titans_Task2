@@ -1,311 +1,428 @@
+<style media="screen">
+
+body{
+  font-family:lato;
+  background: #eee;
+  margin: 0;
+  padding: 0;
+}
+
+.chart{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.breakdown{
+  background: black;
+  color: #fff;
+  padding: 10px;
+  border-radius:20px 6px 20px 6px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation-name: magicslide;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+
+
+.titans{
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  background-color: #000;
+  /* background: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146)); */
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: bold;
+  position: fixed;
+  font-family: monospace;
+    box-shadow:0 2px 5px #ddd;
+    z-index: 10;
+}
+
+.titans p span:nth-of-type(1){
+  color: blue;
+  margin-left: 2px;
+}
+
+.titans p{
+  width: 200px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.titans p::after{
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  height: 4px;
+  width: 50px;
+  right: 45px;
+  background-color: blue;
+}
+
+.container{
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+  margin-top: 60px;
+}
+
+.bar-div{
+  width: 200px;
+  height: 250px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  position: relative;
+  border-left: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  margin-right: 20px;
+  margin-top: 50px;
+}
+
+.bar-pass, .bar-fail{
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bar-div p{
+  transform: rotate(30deg);
+}
+
+
+.bar-pass{
+  background: green;
+  left: 50px;
+  opacity: 0;
+  animation-name: magicht;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+
+.bar-fail{
+  background: red;
+  left: 100px;
+  opacity: 0;
+  animation-name: magicht;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+}
+
+tr.divider td{
+  height: 7px;
+  padding: 0;
+}
+tr.whoiam{
+   height: 50px;
+   transition: all 0.5s ease-in 0.1s;
+   color: #fff;
+   opacity: 0;
+   animation-name: magicrow;
+   animation-fill-mode: forwards;
+   animation-duration: 0.5s;
+   /* border-top: 5px solid #eee; */
+}
+table{
+  /* box-shadow:0 0 8px #ccc; */
+  border-radius:6px;
+  display: relative;
+  background-color: #eee;
+  width: 80vw;
+  padding: 10px;
+}
+tr.whoiam td{
+  /* transition: all 0.3s 0.5s; */
+  /* border-bottom: 6px solid #ddd;
+  border-left: 6px solid #ddd; */
+}
+tr td{
+  border-radius:20px 6px 20px 6px;
+  padding:15px;
+}
+
+tr th:nth-of-type(1){
+  border-radius: 5px 0 0 0;
+}
+tr th:nth-of-type(4){
+  border-radius: 0 5px 0 0;
+}
+
+
+tr.whoiam:hover{
+  transform: scale(1.005);
+}
+tr th{
+  background-color: black;
+  color: #fff;
+  padding: 10px;
+  font-size: 1.1rem;
+}
+.failed{
+  background-color: #e02727c9;
+}
+tr.whoiam td{
+  position: relative;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.pass{
+  background-color: #24a824c2;
+}
+
+.error-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.error, .error-num{
+  color: #ccc;
+}
+.error{
+  display: inline-block;
+  margin-top: -200px;
+  font-size: 1.5rem;
+}
+.error-num{
+  font-size: 10.5rem;
+  font-weight: 700;
+}
+
+tr.whoiam td:hover{
+  /* background-color: #e91e63; */
+  box-shadow:0 5px 15px #ccc;
+}
+
+@keyframes  magicrow {
+  0%{ opacity: 0; transform: scale(0.9);}
+  50%{ opacity: 1; transform: scale(1.005);}
+  100%{ opacity: 1; transform: scale(1);}
+}
+
+@keyframes  magicht {
+  0%{ opacity: 0; height: 0;}
+  50%{ opacity: 1; height: 10px;}
+  100%{ opacity: 1;}
+}
+
+
+@keyframes  magicslide {
+  0%{ opacity: 0; transform: translateX(30px);}
+  50%{ opacity: 1;transform: translateX(10px);}
+  100%{ opacity: 1; transform: translateX(0);}
+}
+</style>
+
+
 <?php
-  class FileReader {
-    public $interns = [];
+  $dir = "./scripts/";
 
-    public function __construct()
-    {
-        $teamScripts = scandir('./scripts');
-        $teamScripts = array_splice($teamScripts, 2);
+  $files = scandir($dir);
+  $filesLength = count($files);
 
-        $result = '';
-        foreach ($teamScripts as $teamScript) {
-          $fileExtension = pathinfo($teamScript)['extension'];
+  $index = 2;
 
-          $teamScript = './scripts/' . $teamScript;
-          switch ($fileExtension) {
-            case 'php':
-                $result = $this->executePhp($teamScript);
-              break;
-            case 'js':
-                $result = $this->executeJavascript($teamScript);
-              break;
-            case 'py':
-                $result = $this->executePython($teamScript);
-              break;
-            default:
-              // Do Nothing.........
-              break;
-          }
+  $titans = array();
 
-          if ($result) {
-            array_push($this->interns, $result);
-          }
+    $queries = $_SERVER['QUERY_STRING'];
 
-        }
 
+  $pass = 0;
+  $failed = 0;
+
+
+  $error = "Query is not valid";
+  $error_num = "404";
+  if($queries === "" || $queries === "html"){
+
+  echo "<div class='titans'> <p>Team<span>-</span>Titans</p> </div>";
+
+  echo "<div class='container'>";
+
+
+  echo '<table class="main">';
+    echo '<tr> <th>#</th> <th>Full Name</th> <th>Infomation</th> <th>Status</th> </tr>';
+}
+  while($index < $filesLength){
+
+
+if($queries === "" || $queries === "html"){
+    echo "<tr class='divider'><td></td><td></td><td></td><td></td></tr>";
+  }
+
+    $array = explode('.', $dir.$files[$index]);
+    $extension = end($array);
+
+    switch ($extension) {
+      case 'js':
+      $output = exec('node '.$dir.$files[$index]);
+        break;
+
+      case 'php':
+      $output = exec('php '.$dir.$files[$index]);
+      break;
+
+      case 'py':
+      $output = exec('python '.$dir.$files[$index]);
+      break;
+
+      default:
+        $output = "nothing do you jare";
+        break;
     }
 
-    public function executePhp($file)
-    {
-      $command = 'php -f ' . $file;
+    preg_match_all("/\[(.*?)\]/",$output,$split);
 
-      exec($command, $output);
+    $newout =  str_replace(array( '[', ']' ), '', $output);
 
-      if (isset($output[0])) {
-        return $this->validator($output[0], $file);
+    $withoutMial = preg_replace('/(and\semail\s\w+\@(gmail|yahoo|hotmail).com )/','',$newout);
+
+    // print_r($withoutMial);
+
+    $status = "failed";
+
+
+
+    $words = array("Hello World", "this is", "with HNGi7 ID", "and email", "using", "for stage 2 task");
+
+    $x = 0;
+    while ($x <= count($words)-1) {
+      if(strpos(strtolower($output), strtolower($words[$x])) !== false){
+        $status = "pass";
+      }else{
+        $status = "failed";
+        break;
       }
-
-      return false;
+      $x++;
     }
 
-    public function executeJavascript($file)
-    {
-      $command = 'node  ' . $file;
-
-      exec($command, $output);
-
-      if (isset($output[0])) {
-        return $this->validator($output[0], $file);
-      }
-
-      return false;
+    if($status === "pass"){
+      // array_push($pass,"okay");
+      $pass++;
+    }else{
+      // array_push($failed,"failed");
+      $failed++;
     }
 
-    public function executePython($file)
-    {
-      $command = 'python ' . $file;
 
-      exec($command, $output);
 
-      if (isset($output[0])) {
-        return $this->validator($output[0], $file);
-      }
 
-      return false;
+
+    $jsonForm = array(
+      "file"=>$files[$index],
+      "output"=> $withoutMial,
+      "name"=>$split[1][0],
+      "id"=>$split[1][1],
+      "email"=>$split[1][2],
+      "language"=>$split[1][3],
+      "status"=>$status
+    );
+    array_push($titans, $jsonForm);
+
+
+  // print_r($newout);
+
+  $num = $index - 1;
+  $anim = $num/(7).s;
+
+    if($queries === "" || $queries === "html"){
+      echo "<tr class='whoiam  $status' style='animation-delay: $anim'>";
+      echo '<td>'. $num .'</td>';
+      echo '<td>'. $split[1][0] .'</td>';
+      echo '<td>'. $newout .'</td>';
+      echo '<td>'. $status .'</td>';
+      echo '</tr>';
+      // echo "<br/>";
     }
 
-    public function validator($data, $file)
-    {
-      $pattern = "/Hello World, this is .* with HNGi7 ID .* and email .* using .* for stage 2 task/";
-      if (preg_match($pattern, $data)) {
-        $name = explode('is', $data);
-        $name = array_splice($name, 2);
-        $name = explode('with', $name[0]);
-
-        $hngID = explode('ID', $data);
-        $hngID = trim($hngID[1]);
-        $hngID = explode(' ', $hngID);
-        $hngID = $hngID[0];
-
-        $email = explode('email', $data);
-        $email = trim($email[1]);
-        $email = explode(' ', $email);
-        $email = $email[0];
-
-        $language = explode('using', $data);
-        $language = trim($language[1]);
-        $language = explode(' ', $language);
-        $language = $language[0];
-
-        $statement = $name[0] . ' with HNGi7 ID ' . $hngID . ' and email ' . $email . ' using ' . $language . ' for stage 2 task.';
-        $Response = new stdClass();
-
-        $Response->id = $hngID;
-        $Response->file = $file;
-        $Response->name = ucfirst($name[0]);
-        $Response->output = $statement;
-        $Response->email = $email;
-        $Response->language = ucwords($language);
-        $Response->status = 'Pass';
-
-        return [ 'statement' => $statement, 'intern' => $Response ];
-      } else {
-        try {
-          $name = explode('is', $data);
-          $name = array_splice($name, 2);
-          $name = explode('with', isset($name[0]) ? $name[0] : '');
-          $name = isset($name[0]) ? $name[0] : '';
-
-          $hngID = explode('ID', $data);
-          $hngID = trim(isset($hngID[1]) ? $hngID[1] : '');
-          $hngID = explode(' ', $hngID);
-          $hngID = isset($hngID[0]) ? $hngID[0] : '';
-
-          $email = explode('email', $data);
-          $email = trim(isset($email[1]) ? $email[1] : '');
-          $email = explode(' ', $email);
-          $email = $email[0] || '';
-
-          $language = explode('using', $data);
-          $language = trim(isset($language[1]) ? $language[1] : '');
-          $language = explode(' ', $language);
-          $language = $language[0] || '';
-
-          $statement = $name . ' with HNGi7 ID ' . $hngID . ' and email ' . $email . ' using ' . $language . ' for stage 2 task.';
-          $Response = new stdClass();
-
-          $Response->id = $hngID;
-          $Response->file = $file;
-          $Response->name = ucfirst($name);
-          $Response->output = $statement;
-          $Response->email = $email;
-          $Response->language = ucwords($language);
-          $Response->status = 'Fail';
-
-          return [ 'statement' => $statement, 'intern' => $Response ];
-        } catch (Exception $e) {
-          return false;
-        }
-      }
-
-    }
-
-    public function htmlResponse()
-    {
-      $dynamicHtml = function($interns) {
-        $response = '';
-        $total = 0;
-        $passed = 0;
-        $failed = 0;
-        for ($i = 0; $i < count($interns); $i++) {
-          $total++;
-          if (strtolower($interns[$i]['intern']->status) == 'pass') {
-            $passed++;
-            $response .= "
-            <div class='col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4'>
-              <div class='card shadow-lg p-3 mb-5 rounded bg-white'>
-                <div class='card_title'>
-                  <h3>Intern</h3>
-                  <hr />
-                </div>
-                <div class='card_body'>
-                  <p>{$interns[$i]['statement']}</p>
-                </div>
-                <div class='card-footer bg-white text-right'>
-                  <small class='text-success text-right'>
-                    <b><i class='fa fa-check'></i> Passed</b>
-                  </small>
-                </div>
-              </div>
-            </div>";
-          } else {
-            $failed++;
-            $response .= "
-            <div class='col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4'>
-              <div class='card shadow-lg p-3 mb-5 rounded bg-white'>
-                <div class='card_title'>
-                  <h3>Intern</h3>
-                  <hr />
-                </div>
-                <div class='card_body'>
-                  <p>{$interns[$i]['statement']}</p>
-                </div>
-                <div class='card-footer bg-white text-right'>
-                  <small class='text-danger text-right'>
-                    <b><i class='fa fa-times'></i> Failed</b>
-                  </small>
-                </div>
-              </div>
-            </div>";
-          }
-
-        }
-
-        $Response = new stdClass();
-        $Response->total = $total;
-        $Response->passed = $passed;
-        $Response->failed = $failed;
-        $Response->resp = $response;
-        return $Response;
-      };
-
-      $html = <<<HTML
-          <!DOCTYPE html>
-          <html lang="en"><head>
-          <title>Team Titans | Task 2</title>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        </head>
-        <body data-gr-c-s-loaded="true">
-          <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            <div class="container">
-              <a class="navbar-brand text-white" href="#">Team Titans</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link text-white" href="">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="?query">Interns JSON</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-
-          <section class="mt-4">
-            <div class="container">
-              <div class="row justify-content-center mt-10">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4">
-                  <h4>Team Titans Statistics</h4>
-                  <span class="badge badge-info">
-                    <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->total} Total
-                  </span>
-                  <span class="badge badge-success">
-                    <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->passed} Passed
-                  </span>
-                  <span class="badge badge-danger">
-                    <i class="fa fa-list"></i> {$dynamicHtml($this->interns)->failed} Failed
-                  </span>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="mt-4">
-            <div class="container">
-              <div class="row">
-                {$dynamicHtml($this->interns)->resp}
-              </div>
-            </div>
-          </section>
-
-          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
-        </body>
-      </html>
-      HTML;
-      return $html;
-    }
+    $index++;
 
   }
 
-  try {
-    $FileReader = new FileReader;
-    // echo "<pre>";
-    // print_r($FileReader->interns);
-    // exit;
-    if (!isset($_GET['query'])) {
-      if (count($FileReader->interns) > 0) {
-        echo $FileReader->htmlResponse();
-      } else {
-        header("Content-Type: application/json;charset=utf-8");
-        echo json_encode(new stdClass());
-      }
-    } else {
-      if (count($FileReader->interns) > 0) {
-        header("Content-Type: application/json;charset=utf-8");
-        $output = [];
-        for ($i = 0; $i < count($FileReader->interns); $i++) {
-          array_push($output, $FileReader->interns[$i]['intern']);
-        }
+  // print_r($pass);
+  // print_r($pass);
+  $numfiles = $filesLength - 2;
 
-        echo json_encode($output, true);
-      } else {
-        header("Content-Type: application/json;charset=utf-8");
-        echo json_encode(new stdClass());
-      }
-    }
-  } catch (Exception $e) {
-    echo 'Error';
+  $failpercentage = (($failed/$numfiles) * 100).'%';
+  $passpercentage = (($pass/$numfiles) * 100).'%';
+if($queries === "" || $queries === "html"){
+
+  echo '</table>';
+
+  echo "<div class='chart'>";
+      echo "<p class='breakdown'>";
+        echo "Total ".$numfiles;
+      echo "</p>";
+    echo "<div class='bar-div'>";
+        echo "<div class='bar-pass' style='height: $passpercentage'>";
+           echo "<p>";
+             echo $passpercentage;
+           echo "</p>";
+        echo "</div>";
+        echo "<div class='bar-fail' style='height: $failpercentage'>";
+            echo "<p>";
+             echo $failpercentage;
+           echo "</p>";
+        echo "</div>";
+    echo "</div>";
+
+    echo "</div>";
+  echo "</div>";
+
+}
+  // function findOut(){
+  //
+  // }
+
+  if($queries === "json"){
+
+    $fineJson = json_encode($titans, JSON_PRETTY_PRINT);
+    echo '<pre>'.$fineJson.'</pre>';
+    return false;
+  }elseif($queries !== ""){
+    echo '<div class="error-div">';
+    echo '<p class="error-num">'.$error_num.'</p>';
+    echo '<span class="error">'.$error.'</span>';
+    echo '</div>';
+    return false;
+
   }
 
  ?>
+
+
+
+ <script type="text/javascript">
+
+ // let magic = document.getElementsByClassName('whoiam');
+ // console.log(magic.length);
+ //
+ // for(let x = 0; x < magic.length; x++){
+ //    setTimeout(()=>{
+ //     // console.log(magic[x]);
+ //     magic[x].classList.add('magic');
+ //   },1000);
+ // }
+
+ </script>
+
