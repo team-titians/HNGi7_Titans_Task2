@@ -1,1 +1,1 @@
-print("Hello World, my name is Ruth Ogadina and my email is ruthogadina@yahoo.com, i will be using python as my programming language")
+print("My name is Ruth Ogadina and my email is ruthogdina@yahoo.com, I will be using python as my programming language")
