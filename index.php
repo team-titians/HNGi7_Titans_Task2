@@ -7,6 +7,14 @@ body{
   padding: 0;
 }
 
+.hidebar{
+  display: none;
+}
+
+.showbar{
+  display: flex;
+}
+
 .chart{
   display: flex;
   justify-content: center;
@@ -97,22 +105,23 @@ body{
   position: absolute;
   bottom: 0;
   width: 40px;
-  color: #fff;
+  color: black;
   font-size: 0.8rem;
   font-weight: bold;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding: 5px;
 }
 
 .bar-div p{
-  transform: rotate(30deg);
+  transform: translateY(-30px);
 }
 
 
 .bar-pass{
-  background: green;
-  left: 50px;
+  background: #24a824c2;
+  left: 40px;
   opacity: 0;
   animation-name: magicht;
   animation-fill-mode: forwards;
@@ -120,13 +129,14 @@ body{
 }
 
 .bar-fail{
-  background: red;
-  left: 100px;
+  background: #e02727c9;
+  left: 130px;
   opacity: 0;
   animation-name: magicht;
   animation-fill-mode: forwards;
   animation-duration: 1s;
   animation-delay: 0.5s;
+  padding: 5px;
 }
 
 tr.divider td{
@@ -272,8 +282,12 @@ tr.whoiam td:hover{
     echo "<tr class='divider'><td></td><td></td><td></td><td></td></tr>";
   }
 
+  ob_flush();
+  flush();
+  // sleep(1);
     $array = explode('.', $dir.$files[$index]);
     $extension = end($array);
+
 
     switch ($extension) {
       case 'js':
@@ -351,6 +365,7 @@ tr.whoiam td:hover{
   $anim = $num/(7).s;
 
     if($queries !== "json" || $queries === "html"){
+      sleep(0.5);
       echo "<tr class='whoiam  $status' style='animation-delay: $anim'>";
       echo '<td>'. $num .'</td>';
       echo '<td>'. $matches[0][0] .'</td>';
@@ -370,6 +385,7 @@ tr.whoiam td:hover{
 
   $failpercentage = round((($failed/$numfiles) * 100),2).'%';
   $passpercentage = round((($pass/$numfiles) * 100),2).'%';
+
   if($queries !== "json" || $queries === "html"){
 
   echo '</table>';
@@ -407,26 +423,14 @@ tr.whoiam td:hover{
 
   if($queries === "json"){
     // header('Content-Type: application/json');
+    // ob_flush();
+    // flush();
+    // sleep(1);
     $fineJson = json_encode($titans, JSON_PRETTY_PRINT);
+    ob_flush();
+    flush();
     echo '<pre>'.$fineJson.'</pre>';
     return false;
   }
 
  ?>
-
-
-
- <script type="text/javascript">
-
- // let magic = document.getElementsByClassName('whoiam');
- // console.log(magic.length);
- //
- // for(let x = 0; x < magic.length; x++){
- //    setTimeout(()=>{
- //     // console.log(magic[x]);
- //     magic[x].classList.add('magic');
- //   },1000);
- // }
-
- </script>
-
