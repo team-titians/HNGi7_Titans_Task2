@@ -1,0 +1,1 @@
+print("Hello World, this is ThankGod Chiagozie with HNGi7 ID HNG-04781 and email chiagozieani145@gmail.com using python for stage 2 task")

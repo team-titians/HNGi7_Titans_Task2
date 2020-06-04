@@ -1,0 +1,1 @@
+console.log("Hello World, this is Aliu Isaac with HNGi7 ID 03884 and email ujezujez@gmail.com using javascript for stage 2 task");
