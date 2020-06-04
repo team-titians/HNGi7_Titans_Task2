@@ -120,6 +120,7 @@ body{
 .container{
   display: flex;
   justify-content: space-between;
+  flex-flow: row wrap-reverse;
   /* min-height: 100vh; */
   margin-bottom: 60px;
   margin-top: 60px;
@@ -203,7 +204,7 @@ table{
   border-radius:6px;
   display: relative;
   background-color: #eee;
-  width: 80vw;
+  min-width: 80vw;
   padding: 10px;
 }
 tr.whoiam td{
