@@ -11,6 +11,9 @@ body{
   display: flex;
   justify-content: center;
   flex-direction: column;
+  position: fixed;
+  top: 70px;
+  right: 10px;
 }
 
 .breakdown{
@@ -258,7 +261,7 @@ tr.whoiam td:hover{
   echo "<div class='titans'> <p>Team<span>-</span>Titans</p> </div>";
 
   echo "<div class='container'>";
-
+// echo round(25.22222222215,2);
 
   echo '<table class="main">';
     echo '<tr> <th>#</th> <th>Full Name</th> <th>Infomation</th> <th>Status</th> </tr>';
@@ -362,8 +365,8 @@ tr.whoiam td:hover{
   // print_r($pass);
   $numfiles = $filesLength - 2;
 
-  $failpercentage = (($failed/$numfiles) * 100).'%';
-  $passpercentage = (($pass/$numfiles) * 100).'%';
+  $failpercentage = round(($failed/$numfiles) * 100).'%';
+  $passpercentage = round(($pass/$numfiles) * 100).'%';
   if($queries !== "json" || $queries === "html"){
 
   echo '</table>';
