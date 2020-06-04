@@ -369,7 +369,7 @@ tr.whoiam td:hover{
 
     // print_r($withoutMial);
 
-    $status = "failed";
+    $status = "fail";
 
 
     //
@@ -392,7 +392,7 @@ tr.whoiam td:hover{
       $pass++;
     }else{
       // array_push($failed,"failed");
-      $status = "failed";
+      $status = "fail";
       $failed++;
     }
 
