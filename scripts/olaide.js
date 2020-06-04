@@ -1,0 +1,1 @@
+console.log("Hello World, this is with Olaide Samuel with HNGi7 HNG-06326 and email samuelcenaokediji@gmail.com using javascript for stage 2 task");
