@@ -48,6 +48,33 @@ body{
   margin-bottom: 10px;
 }
 
+.chart-desc{
+  position: relative;
+  margin-left: 20px;
+  margin-top: 5px;
+  transform: translateY(20px);
+}
+
+.chart-desc::before{
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 2px;
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  background: black;
+}
+
+.bar-div + p.chart-desc::before{
+  background: #24a824;
+}
+
+.bar-div + p.chart-desc + p.chart-desc::before{
+  background: #e02727;
+}
+
+
 
 .titans{
   left: 0;
@@ -440,6 +467,8 @@ tr.whoiam td:hover{
         echo "</div>";
     echo "</div>";
 
+    echo "<p class='chart-desc'> Percentage of passes</p>";
+    echo "<p class='chart-desc'> Percentage of fails</p>";
     echo "</div>";
 
 
