@@ -98,12 +98,16 @@ body{
   border-left: 2px solid #ccc;
   border-bottom: 2px solid #ccc;
   margin-right: 20px;
-  margin-top: 50px;
+  /* margin-top: 50px; */
+  background-image: url('https://i.ya-webdesign.com/images/graph-paper-background-png-4.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .bar-pass, .bar-fail{
   position: absolute;
-  bottom: 1px;
+  bottom: 0;
   width: 40px;
   color: black;
   font-size: 0.9rem;
@@ -121,8 +125,8 @@ body{
 
 .bar-pass{
   border-top: 6px solid #9ff691;
-  border-left: 16px solid #196619;
-  background: #24a824c2;
+  border-left: 16px solid #006800;
+  background: #24a824;
   left: 35px;
   opacity: 0;
   animation-name: magicht;
@@ -132,8 +136,8 @@ body{
 
 .bar-fail{
   border-top: 6px solid #f08c8c;
-  border-left: 16px solid #e02727c9;
-  background: #e02727c9;
+  border-left: 16px solid #9d0303;
+  background: #e02727;
   left: 130px;
   opacity: 0;
   animation-name: magicht;
