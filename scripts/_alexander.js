@@ -5,7 +5,7 @@
 
 function identity(fullName, hngId, email, language){
     var introduction = "Hello World, this is "+fullName+
-        " with HNG ID"+hngId+" and email "+email+" using "+
+        " with HNG ID "+hngId+" and email "+email+" using "+
         language+" for stage 2 task"
     console.log(introduction);
 }
