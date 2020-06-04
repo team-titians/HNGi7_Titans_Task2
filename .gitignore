@@ -1,4 +1,4 @@
 scripts-test
-index.php
-README.md
+/index.php
+/README.md
 *.gitignore
