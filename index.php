@@ -32,11 +32,11 @@ foreach($scripts as $script){
     $intern = new stdClass();
     
     $intern->file= $script;
-    $intern->output = $output[0];
-    $intern->name = $matches[0][0];
-    $intern->id = $matches[0][1];
-    $intern->email = $matches[0][2];
-    $intern->language = $matches[0][3];
+    $intern->output = trim($output[0]);
+    $intern->name = trim($matches[0][0]);
+    $intern->id = trim($matches[0][1]);
+    $intern->email = trim($matches[0][2]);
+    $intern->language = trim($matches[0][3]);
     array_push($out, $intern);
     if(count($full_match[0]) == 1 ){
         $intern->status= "pass";
