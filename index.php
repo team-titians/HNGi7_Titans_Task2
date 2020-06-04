@@ -39,6 +39,15 @@ body{
   animation-duration: 1s;
 }
 
+.breakdown ~ span{
+  animation-name: magicslide;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  opacity: 0;
+  margin-bottom: 10px;
+}
+
 
 .titans{
   left: 0;
@@ -84,7 +93,8 @@ body{
 .container{
   display: flex;
   justify-content: space-between;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  margin-bottom: 60px;
   margin-top: 60px;
 }
 
@@ -170,13 +180,16 @@ table{
   padding: 10px;
 }
 tr.whoiam td{
-  /* transition: all 0.3s 0.5s; */
-  /* border-bottom: 6px solid #ddd;
-  border-left: 6px solid #ddd; */
+  word-wrap: break-word;
 }
 tr td{
   border-radius:20px 6px 20px 6px;
   padding:15px;
+}
+
+tr.whoiam td:nth-of-type(2){
+  width: 150px;
+  max-width: 200px;
 }
 
 tr th:nth-of-type(1){
@@ -323,7 +336,7 @@ tr.whoiam td:hover{
     //
     // $newout =  str_replace(array( '[', ']' ), '', $output);
     //
-    $withoutMial = preg_replace('/(and\semail\s\w+\.{0,1}\w+\@(gmail|yahoo|hotmail).com )/','',$output);
+    $withoutMial = preg_replace('/(and\semail\s\w+\.{0,1}\w+\@(gmail|yahoo|hotmail).com)/','',$output);
 
     // print_r($withoutMial);
 
@@ -387,6 +400,12 @@ tr.whoiam td:hover{
 
   }
 
+  function hello(){
+         echo "<br/>";
+        echo "Hello";
+        echo "<br/>";
+      }
+
   // print_r($pass);
   // print_r($pass);
   $numfiles = $filesLength - 2;
@@ -422,7 +441,10 @@ tr.whoiam td:hover{
     echo "</div>";
 
     echo "</div>";
+
+
   echo "</div>";
+
 
 }
   // function findOut(){
@@ -440,5 +462,7 @@ tr.whoiam td:hover{
     echo '<pre>'.$fineJson.'</pre>';
     return false;
   }
+
+
 
  ?>
