@@ -40,6 +40,7 @@ foreach($scripts as $script){
     else{
         $intern->status ="failed";
     }
+    
 }
 
 // in the given task it was stated that the json will be gotten through index.php?json..hence the code below
