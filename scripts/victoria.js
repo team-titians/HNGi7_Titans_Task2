@@ -1,9 +1,7 @@
-let content = "Hello World, this is Victoria Adegboye with HNGi7 ID HNG-00157 using javascript for stage 2 task"
-let email = "bv.adegboye@gmail.com";
-
-const victoriaScript = () => {
-    console.log(content);
-    console.log(email);
+let victoria = {
+    fullName: 'Victoria Adegboye',
+    iD: 'HNG-00157',
+    language: 'JavaScript',
+    email: 'bv.adegboye@gmail.com'
 }
-
-victoriaScript();
+console.log(`Hello world, this is ${victoria.fullName} with ${victoria.iD} and ${victoria.email} using ${victoria.language} for stage 2 task`)
