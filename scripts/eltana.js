@@ -1,15 +1,1 @@
-
-const userName = 'Lotanna Kyrian Agbaka';
-        const hngId = 'HNG-01393';
-        const email = 'kyrian.lotanna@gmail.com';
-        const language = "Javascript";
-​
-        function details() {
-​
-            const myDetails = `Hello World, this is ${userName} with HNG ID ${hngId} and email ${email} using ${language} to complete stage 2 task`;
-            console.log(myDetails);
-        }
-​
-        details();
-
-
+console.log("Hello World, this is Lotanna Kyrian Agbaka with HNGi7 ID HNG-01393 and email kyrian.lotanna@gmail.com using nodejs for stage 2 task");
