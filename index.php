@@ -63,7 +63,7 @@
 
     public function executePython($file)
     {
-      $command = 'python3 ' . $file;
+      $command = 'python ' . $file;
 
       exec($command, $output);
 
@@ -159,7 +159,7 @@
         $failed = 0;
         for ($i = 0; $i < count($interns); $i++) {
           $total++;
-          if (strtolower($interns[$i]['intern']->status) == 'passed') {
+          if (strtolower($interns[$i]['intern']->status) == 'pass') {
             $passed++;
             $response .= "
             <div class='col-xs-12 col-sm-12 col-md-12 col-xl-4 col-lg-4'>
