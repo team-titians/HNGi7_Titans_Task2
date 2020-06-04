@@ -453,7 +453,7 @@ tr.whoiam td:hover{
         echo "Pass : ".$pass;
       echo "</span>";
       echo "<span>";
-        echo "Failed :".$fail;
+        echo "Fail :".$failed;
       echo "</span>";
     echo "<div class='bar-div'>";
         echo "<div class='bar-pass' style='height: $passpercentage'>";
