@@ -59,7 +59,7 @@ body{
   content: "";
   position: absolute;
   left: -20px;
-  top: 2px;
+  top: 1px;
   width: 15px;
   height: 15px;
   border-radius: 2px;
