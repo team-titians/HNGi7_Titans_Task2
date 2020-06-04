@@ -392,7 +392,7 @@ tr.whoiam td:hover{
       $pass++;
     }else{
       // array_push($failed,"failed");
-      $status = "failed";
+      $status = "fail";
       $failed++;
     }
 
@@ -454,7 +454,7 @@ tr.whoiam td:hover{
         echo "Passed :".$pass;
       echo "</span>";
       echo "<span>";
-        echo "Failed :".$failed;
+        echo "Failed :".$fail;
       echo "</span>";
     echo "<div class='bar-div'>";
         echo "<div class='bar-pass' style='height: $passpercentage'>";
