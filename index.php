@@ -96,7 +96,7 @@ body{
 .bar-pass, .bar-fail{
   position: absolute;
   bottom: 0;
-  width: 30px;
+  width: 40px;
   color: #fff;
   font-size: 0.8rem;
   font-weight: bold;
@@ -293,50 +293,53 @@ tr.whoiam td:hover{
         break;
     }
 
-    preg_match_all("/\[(.*?)\]/",$output,$split);
+    $full_match=[];
+    preg_match_all("/(?<=this is)(.*)(?=with)|(?<=ID)(.*)(?=and)|(?<=email)(.*)(?=using)|(?<=using)(.*)(?=for)/", $output, $matches);
+    preg_match_all("/Hello World, this is(.*)with HNGi7 ID(.*)and email(.*)using(.*)for stage 2 task/",$output, $full_match);
 
-    $newout =  str_replace(array( '[', ']' ), '', $output);
 
-    $withoutMial = preg_replace('/(and\semail\s\w+\@(gmail|yahoo|hotmail).com )/','',$newout);
+    //
+    // $newout =  str_replace(array( '[', ']' ), '', $output);
+    //
+    $withoutMial = preg_replace('/(and\semail\s\w+\.{0,1}\w+\@(gmail|yahoo|hotmail).com )/','',$output);
 
     // print_r($withoutMial);
 
     $status = "failed";
 
 
+    //
+    // $words = array("Hello World,", "this is", "with HNGi7 ID", "and email", "using", "for stage 2 task");
+    //
+    // $x = 0;
+    // while ($x <= count($words)-1) {
+    //   if(strpos(strtolower($output), strtolower($words[$x])) !== false){
+    //     $status = "pass";
+    //   }else{
+    //     $status = "failed";
+    //     break;
+    //   }
+    //   $x++;
+    // }
 
-    $words = array("Hello World", "this is", "with HNGi7 ID", "and email", "using", "for stage 2 task");
-
-    $x = 0;
-    while ($x <= count($words)-1) {
-      if(strpos(strtolower($output), strtolower($words[$x])) !== false){
-        $status = "pass";
-      }else{
-        $status = "failed";
-        break;
-      }
-      $x++;
-    }
-
-    if($status === "pass"){
+    if(count($full_match[0]) == 1){
       // array_push($pass,"okay");
+      $status = "pass";
       $pass++;
     }else{
       // array_push($failed,"failed");
+      $status = "failed";
       $failed++;
     }
-
-
-
 
 
     $jsonForm = array(
       "file"=>$files[$index],
       "output"=> $withoutMial,
-      "name"=>$split[1][0],
-      "id"=>$split[1][1],
-      "email"=>$split[1][2],
-      "language"=>$split[1][3],
+      "name"=>$matches[0][0],
+      "id"=>$matches[0][1],
+      "email"=>$matches[0][2],
+      "language"=>$matches[0][3],
       "status"=>$status
     );
     array_push($titans, $jsonForm);
@@ -350,8 +353,8 @@ tr.whoiam td:hover{
     if($queries !== "json" || $queries === "html"){
       echo "<tr class='whoiam  $status' style='animation-delay: $anim'>";
       echo '<td>'. $num .'</td>';
-      echo '<td>'. $split[1][0] .'</td>';
-      echo '<td>'. $newout .'</td>';
+      echo '<td>'. $matches[0][0] .'</td>';
+      echo '<td>'. $output .'</td>';
       echo '<td>'. $status .'</td>';
       echo '</tr>';
       // echo "<br/>";
@@ -365,8 +368,8 @@ tr.whoiam td:hover{
   // print_r($pass);
   $numfiles = $filesLength - 2;
 
-  $failpercentage = round(($failed/$numfiles) * 100).'%';
-  $passpercentage = round(($pass/$numfiles) * 100).'%';
+  $failpercentage = round((($failed/$numfiles) * 100),2).'%';
+  $passpercentage = round((($pass/$numfiles) * 100),2).'%';
   if($queries !== "json" || $queries === "html"){
 
   echo '</table>';
@@ -375,6 +378,12 @@ tr.whoiam td:hover{
       echo "<p class='breakdown'>";
         echo "Total ".$numfiles;
       echo "</p>";
+      echo "<span>";
+        echo "Passed :".$pass;
+      echo "</span>";
+      echo "<span>";
+        echo "Failed :".$failed;
+      echo "</span>";
     echo "<div class='bar-div'>";
         echo "<div class='bar-pass' style='height: $passpercentage'>";
            echo "<p>";
@@ -397,7 +406,7 @@ tr.whoiam td:hover{
   // }
 
   if($queries === "json"){
-
+    // header('Content-Type: application/json');
     $fineJson = json_encode($titans, JSON_PRETTY_PRINT);
     echo '<pre>'.$fineJson.'</pre>';
     return false;
