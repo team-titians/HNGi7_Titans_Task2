@@ -5,6 +5,6 @@ const myself = {
     Email: "bv.adegboye@gmail.com",
     Language: "Javascript"
 }
-const message = 'Hello world, this is ${myself.firstname} ${myself.lastname} with HNGi7 ID ${myself.Id} and email {myself.Email} using ${myself.Language} for stage 2 task.';
+const message = `Hello world, this is ${myself.firstname} ${myself.lastname} with HNGi7 ID ${myself.Id} and email ${myself.Email} using ${myself.Language} for stage 2 task.`;
 
 console.log(message);
