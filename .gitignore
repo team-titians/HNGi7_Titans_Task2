@@ -1,3 +1,7 @@
 scripts-test
+index.php
+README.MD
+*index.php
+*README.md
 *.gitignore
 .gitignore
