@@ -6,4 +6,5 @@ const message = `Hello World, this is ${name} with HNGi7 ID ${hngId} and email $
 
 console.log(message);
 
+
 //This returns Hello World, this is Ehimenmen Ataman with HNGi7 ID HNG-05800 and email sarahehi.sa@gmail.com using JavaScript for stage 2 task.
