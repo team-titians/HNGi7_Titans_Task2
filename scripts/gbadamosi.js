@@ -1,4 +1,5 @@
-const projectsNew = ["Odofin Gbadamosi", "00635", "Javascript", "odofing@gmail.com"];
-[fullName, hngID, language, email] = projectsNew;
+const projects = ["Odofin Gbadamosi", "00635", "odofing@gmail.com", "Javascript"];
+[name, id, email, language] = projects;
 
- console.log(`Hello World, this is ${fullName} with ${hngID} with email ${email} using ${language} for stage 2 task`);
+
+ console.log(`Hello World, this is ${name} with ${id} with email ${email} using ${language} for stage 2 task`);
