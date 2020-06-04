@@ -253,7 +253,7 @@ tr.whoiam td:hover{
 
   $error = "Query is not valid";
   $error_num = "404";
-  if($queries === "" || $queries === "html"){
+    if($queries !== "json" || $queries === "html"){
 
   echo "<div class='titans'> <p>Team<span>-</span>Titans</p> </div>";
 
@@ -265,8 +265,7 @@ tr.whoiam td:hover{
 }
   while($index < $filesLength){
 
-
-if($queries === "" || $queries === "html"){
+  if($queries !== "json" || $queries === "html"){
     echo "<tr class='divider'><td></td><td></td><td></td><td></td></tr>";
   }
 
@@ -345,7 +344,7 @@ if($queries === "" || $queries === "html"){
   $num = $index - 1;
   $anim = $num/(7).s;
 
-    if($queries === "" || $queries === "html"){
+    if($queries !== "json" || $queries === "html"){
       echo "<tr class='whoiam  $status' style='animation-delay: $anim'>";
       echo '<td>'. $num .'</td>';
       echo '<td>'. $split[1][0] .'</td>';
@@ -365,7 +364,7 @@ if($queries === "" || $queries === "html"){
 
   $failpercentage = (($failed/$numfiles) * 100).'%';
   $passpercentage = (($pass/$numfiles) * 100).'%';
-if($queries === "" || $queries === "html"){
+  if($queries !== "json" || $queries === "html"){
 
   echo '</table>';
 
@@ -399,13 +398,6 @@ if($queries === "" || $queries === "html"){
     $fineJson = json_encode($titans, JSON_PRETTY_PRINT);
     echo '<pre>'.$fineJson.'</pre>';
     return false;
-  }elseif($queries !== ""){
-    echo '<div class="error-div">';
-    echo '<p class="error-num">'.$error_num.'</p>';
-    echo '<span class="error">'.$error.'</span>';
-    echo '</div>';
-    return false;
-
   }
 
  ?>
