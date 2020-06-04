@@ -253,7 +253,6 @@ tr.whoiam td:hover{
   $pass = 0;
   $failed = 0;
 
-<<<<<<< HEAD
 
   $error = "Query is not valid";
   $error_num = "404";
@@ -291,30 +290,6 @@ tr.whoiam td:hover{
 
       default:
         $output = "nothing do you jare";
-=======
-// get al files from scirpts folder
-$scripts_init = scandir("scripts/");
-$scripts = array_splice($scripts_init, 2); // the first two index contain "." and ".." which is not needed
-$out = [];
-
-//loop through all files in directory and run based on file extension
-$total=0;
-$failed=0;
-$passed=0;
-foreach($scripts as $script){
-    $matches = [];
-    $script_location ="scripts/".$script;
-    $temp_value="";
-    $output =[];
-    switch(pathinfo($script)['extension']){
-        case 'py':
-             exec("python3 ".$script_location, $output, $return_val);
-        break; 
-        case 'js':
-            exec("node ".$script_location, $output, $return_val);
-        case 'php':
-            exec("php ".$script_location, $output, $return_val);
->>>>>>> fac7e430734608339b254c3cc974c4c2885cfe15
         break;
     }
 
@@ -356,7 +331,6 @@ foreach($scripts as $script){
       $status = "failed";
       $failed++;
     }
-<<<<<<< HEAD
 
 
     $jsonForm = array(
@@ -426,31 +400,6 @@ foreach($scripts as $script){
     echo "</div>";
   echo "</div>";
 
-=======
-    else{
-        $intern->status ="failed";
-        $failed+=1;
-    }
-    $total+=1;
-}
-
-// in the given task it was stated that the json will be gotten through index.php?json..hence the code below
-if ($_SERVER['QUERY_STRING'] == "json") {
-    //  return output in json forma
-    header('Content-Type: application/json');
-    echo json_encode($out, JSON_PRETTY_PRINT);
-}else{
-    ob_flush();
-    flush();
-    sleep(1);
-    echo "waiting for a cool design to display or result";
-    echo '<br>';
-    echo "Total Submitted: ".$total;
-    echo '<br>';
-    echo "Total Passed: ".$passed;
-    echo '<br>';
-    echo "Total Failed: ".$failed;
->>>>>>> fac7e430734608339b254c3cc974c4c2885cfe15
 }
   // function findOut(){
   //
