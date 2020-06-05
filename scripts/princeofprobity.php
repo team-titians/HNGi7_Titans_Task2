@@ -1,4 +1,8 @@
 <?php 
+$myname='Olubunmo Adeyinka Temitayo';
+$id='HNG-01052';
+$language='PHP';
+$email='princeyk213@gmail.com';
 
-echo "Hello World, this is Olubunmo Adeyinka Temitayo with HNGi7 ID HNG-01052 using php for stage 2 task. princeyk213@gmail.com";
+echo "Hello World, this is $myname with HNGi7 ID $id using $language for stage 2 task $email";
 ?>
