@@ -5,6 +5,6 @@ let myName = {
 
 }
 
-let result = "Hello world!,this is " + myName.name + " with HNGi7 ID " + myName.id + " using " + myName.language + " for stage 2"
+let result = "Hello world, this is " + myName.name + " with HNGi7 ID " + myName.id + " using " + myName.language + " for stage 2"
 
 console.log(result); 
