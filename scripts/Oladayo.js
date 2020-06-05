@@ -1,5 +1,5 @@
 const myData = {
-    name: "Akinola oladayo",
+    name: "Akinola Oladayo",
     language : "javascript",
     email:"oladayoakinola56@gmail.com",
     hngld:"HNG-00210"
