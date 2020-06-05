@@ -6,6 +6,6 @@ let myName = {
 
 }
 
-let result = "Hello world!, My name is " + myName.name + " with HNGid of " + myName.id + " and email: " + myName.email + ", i used " + myName.language + " to do the task 2"
+let result = "Hello world!, This is " + myName.name + " with HNGi7 ID " + myName.id + " and email " + myName.email + ", i used " + myName.language + " for task 2"
 
 console.log(result); 
