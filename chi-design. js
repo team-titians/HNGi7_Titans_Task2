@@ -1,0 +1,9 @@
+function task2(){
+    let name= "chioma ifeanyichukwu"
+    let internshipId= "HNGi7-03289"
+    let language= "javascript"
+    let email= "ifeanyichukwuchioma3@gmail.com"
+    console.log("Hello World " + "this is " + name + " with " +internshipId + 
+    " using " + language +  " and email " + email + " for stage 2 task.")
+}
+task2()
