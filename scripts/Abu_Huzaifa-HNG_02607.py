@@ -13,5 +13,5 @@ def main():
     
     return 'Hello World, this is '+fullname+' with HNGi7 ID '+internID+' and email '+email+' using '+language+' for stage 2 task.'
     
-    info = main()
-    print(info)
+info = main()
+print(info)
