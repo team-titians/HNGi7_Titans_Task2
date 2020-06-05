@@ -1,10 +1,12 @@
-//method 1 using arrow function
+var person = {
+    fullname: "Aliu Isaac",
+    ID: "HNG-03884",
+    email: "ujezujez@gmail.com",
+    language: "Javascript"
+};
 
-const HNG = (name,id,email,progLang) => `Hello World, this is ${name},\n with the HNGi7 ID of ${id} and email ${email},\n using ${progLang} for stage 2 task `;
+function personalDetails(){
+   console.log (`Hello World, this is ${person.fullname} with HNGi7 ID ${person.ID} and email ${person.email} using ${person.language} for stage 2 task`);
+}
 
-HNG("Aliu Isaac","HNG-03884", "ujezujez@gmail.com","Javascript");
-
-// Test with console
-
-console.log(HNG("Aliu Isaac","HNG-03884", "ujezujez@gmail.com", "JavaScript"));
-
+personalDetails();
