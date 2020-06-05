@@ -509,6 +509,10 @@ tr.whoiam td:hover{
   //   // $index--;
   // }
 
+  if($status === "fail"){
+    $withoutMial = $output;
+  }
+
     if($queries !== "json" || $queries === "html"){
       sleep(0.5);
       echo "<tr class='whoiam  $status' style='animation-delay: $anim'>";
