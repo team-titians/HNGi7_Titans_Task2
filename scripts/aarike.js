@@ -1,0 +1,1 @@
+console.log('Hello World, this is Akindipe Olajumoke Oluwakemi with HNGi7 ID HNG-04868 and email olajumokeakindipe@gmail.com using JavaScript for stage 2 task');

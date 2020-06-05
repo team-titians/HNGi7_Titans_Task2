@@ -4,5 +4,4 @@ def hello(name, id, email, language):
 def main():
     print(hello('Elijah Balogun', "HNG-02887", "dzabeligan@gmail.com", "python"))
 
-if __name__ == '__main__':
-    main()
+main()

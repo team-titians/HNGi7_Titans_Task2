@@ -1,5 +1,5 @@
 const debuggerScript = (Name, HngId, mail, syntax) => {
-  console.log(`Hello World, this is ${Name} with HNGi7 ID: ${HngId} and email ${mail} using ${syntax} for stage 2 task`);
+  console.log(`Hello World, this is ${Name} with HNGi7 ID ${HngId} and email ${mail} using ${syntax} for stage 2 task`);
 }
 
 
