@@ -1,7 +1,6 @@
 <?php
 
 $fullName = "Owoyemi Busuyi Philip";
-$email = "owoyemibusuyi0@gmail.com";
 $hng_id = "HNG-06108";
 $language = "PHP";
 
