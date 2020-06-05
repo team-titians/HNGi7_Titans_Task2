@@ -5,6 +5,7 @@
 <body>
 
 <?php
+<<<<<<< HEAD
 $salutation = "Hello world!";
 echo "<p>$salutation</p>";
 ?>
@@ -18,3 +19,53 @@ echo "My name is ".$first_name." ".$last_name;
  using PHP language for stage 2 task</p>
 </body>
 <html>
+=======
+  class IloriStephen {
+    public function __construct()
+    {
+
+    }
+
+    public function makeMePassTask2()
+    {
+      return "Hello World, this is Ilori Stephen A with HNGi7 ID HNG-01776 and email stephenilori458@gmail.com using PHP for stage 2 task";
+    }
+  }
+
+  $IloriStephen = new IloriStephen();
+  $stephenIlori = $IloriStephen->makeMePassTask2();
+  print $stephenIlori;
+ ?><?php
+  class IloriStephen {
+    public function __construct()
+    {
+
+    }
+
+    public function makeMePassTask2()
+    {
+      return "Hello World, this is Ilori Stephen A with HNGi7 ID HNG-01776 and email stephenilori458@gmail.com using PHP for stage 2 task";
+    }
+  }
+
+  $IloriStephen = new IloriStephen();
+  $stephenIlori = $IloriStephen->makeMePassTask2();
+  print $stephenIlori;
+ ?><?php
+  class IloriStephen {
+    public function __construct()
+    {
+
+    }
+
+    public function makeMePassTask2()
+    {
+      return "Hello World, this is Ilori Stephen A with HNGi7 ID HNG-01776 and email stephenilori458@gmail.com using PHP for stage 2 task";
+    }
+  }
+
+  $IloriStephen = new IloriStephen();
+  $stephenIlori = $IloriStephen->makeMePassTask2();
+  print $stephenIlori;
+ ?>vvv
+>>>>>>> f9f01a127a0076c9c6e94bb9b1ce570d849971b8
