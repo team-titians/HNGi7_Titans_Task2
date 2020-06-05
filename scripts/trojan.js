@@ -1,11 +1,10 @@
-// variable declearations
-const myDetails = {
-    fullName : 'Jacobs David',
-    hngID : 'HNG-02837',
-    email : 'davidjacobs522@gmail.com',
-    languageUsed : 'Javascript',
+const myDetails = () => {
+    // declaration of intern details
+    const fullName = 'Jacobs David';
+    const hngId = 'HNG-02837';
+    const email = 'davidjacobs522@gmail.com';
+    const languageUsed  = 'JavaScript';
+    return `Hello World, this is ${ fullName } with HNGi7 ID ${ hngId } and email ${ email } using ${ languageUsed } for stage 2 task`
 }
-let output = "Hello World!, my name is " + myDetails.fullName + " with HNG ID of " + myDetails.hngID + " and email " + myDetails.email + ", using " + myDetails.languageUsed 
-+ " programing language for HNG Task 2";
-// to log the output to the console
-console.log(output)
+// log output to the console
+console.log(myDetails());
