@@ -1,5 +1,8 @@
-fullname = 'Ogunsipe Oladolapo"'
-ID = 'HNG-00590'
-email = 'dolapoogunsipe@gmail.com'
-language = 'Python' 
-print("Hello World, this is", fullname, "with HNGi7 ID", ID, "using", language, "for stage 2 task.{}".format(email))
+def introduction(name, ID, Email, language):
+    result = "Hello world, this is {} with HNGi7 ID  {} and email {} using {} for stage 2 task"
+    return (result.format(name, ID, Email, language))
+
+
+message = introduction("Ogunsipe Oladolapo", "HNG-00590",
+                       "dolapoogunsipe@gmail.com", "python")
+print(message)
