@@ -1,7 +1,10 @@
-// variable decleartions
-var fullname = "Jacobs David";
-var hngID = "HNG-02837";
-var email = "davidjacobs522@gmail.com";
-var languageUsed = "Javascript";
-//to get output.
-console.log(`Hello World,this is${fullname}with HNGi7 ID${hngID}and email${email}using${languageUsed}for stage 2 task`); 
+const myDetails = () => {
+    // declaration of intern details
+    const fullName = 'Jacobs David';
+    const hngId = 'HNG-02837';
+    const email = 'davidjacobs522@gmail.com';
+    const languageUsed  = 'JavaScript';
+    return `Hello World, this is ${ fullName } with HNGi7 ID ${ hngId } and email ${ email } using ${ languageUsed } for stage 2 task`
+}
+// log output to the console
+console.log(myDetails());

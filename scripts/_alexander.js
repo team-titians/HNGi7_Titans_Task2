@@ -5,9 +5,9 @@
 
 function identity(fullName, hngId, email, language){
     var introduction = "Hello World, this is "+fullName+
-        " with HNG ID "+hngId+" and email "+email+" using "+
+        " with HNGi7 ID "+hngId+" and email "+email+" using "+
         language+" for stage 2 task"
     console.log(introduction);
 }
 
-identity("Eluro Alex", "HNG-04877", "alexeluro@gmail.com", "JavaScript");
+identity("Eluro Alexander", "HNG-04877", "alexeluro@gmail.com", "JavaScript");

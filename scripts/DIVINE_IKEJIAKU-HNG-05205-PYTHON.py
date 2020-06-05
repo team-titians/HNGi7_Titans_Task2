@@ -1,8 +1,14 @@
-name = "Ikejiaku Divine"
-hngi7_id = " HNG-05205"
-language = "Python"
-email = "divineikejiaku@gmail.com"
+def stage_2_task(data):
+    return_string = "Hello World, this is {} with HNGi7 ID {} and email {} using {} for stage 2 task"
+    return(return_string.format(data['name'], data['id'], data['email'], data['language']))
 
 
-print(
-    f"Hello World, this is {name} with HNGi7 ID {hngi7_id} and email {email} using {language} for stage 2 task.")
+if __name__ == '__main__':
+
+    details = {"name": "Ikejiaku Divine",
+               "id": "HNG-05205",
+               "email": "divineikejiaku@gmail.com",
+               "language": "python",
+               }
+
+    print(stage_2_task(details))

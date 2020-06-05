@@ -1,10 +1,7 @@
-let userName = "Okechukwu Onwualimba";
-let hngID = "HNG-00405";
-let  email = "Okechukwuonwualimba@gmail.com";
-let lang = "javascript"
-function personalDetail() {
-    const message =
-`Hello World, this is ${userName} with HNGi7 ID ${hngID}and email ${email} using ${lang} for stage 2 task`;
-    console.log(message);
+let oky = {
+    fullName: 'Okechukwu Onwualimba', 
+    HNGi7ID: 'HNG-00405', 
+    language: 'JavaScript',
+    email: 'okechukwuonwualimba@gmail.com'
 }
-personalDetail();
+console.log(`Hello World, this is ${oky.fullName} with HNGi7 ID ${oky.HNGi7ID} and email ${oky.email} using ${oky.language} for stage 2 task`)
