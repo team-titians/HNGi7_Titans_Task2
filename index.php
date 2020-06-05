@@ -7,6 +7,63 @@ body{
   padding: 0;
 }
 
+#scroll-to{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: blue;
+  transition: all 0.5s linear;
+}
+
+#scroll-to span{
+  display: inline-block;
+  position: relative;
+  width:100%;
+  height: 100%;
+}
+#scroll-to span::before,
+#scroll-to span::after
+{
+  content: "";
+  position: absolute;
+
+}
+
+#scroll-to span::after{
+  width: 2px;
+  height: 20px;
+  background: #fff;
+  top: 12px;
+  left: 19.5px;
+
+}
+#scroll-to span::before
+{
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  transform: rotate(45deg);
+  left: 16px;
+  top: 11px;
+}
+.show-scrollTo{
+  opacity: 1;
+  /* display: block; */
+}
+
+.hide-scrollTo{
+  opacity: 0;
+  /* display: none; */
+
+}
+
+#scroll-to:hover{
+  transform: translateY(-5px);
+}
+
 .hidebar{
   display: none;
 }
@@ -298,12 +355,16 @@ tr.whoiam td:hover{
 
 
 <?php
-  $dir = "./scripts/";
+  $dir = "scripts/";
 
-  $files = scandir($dir);
-  $filesLength = count($files);
+  $files = scandir($dir,1);
 
-  $index = 2;
+  // print_r($files);
+  //
+  // return false;
+  $filesLength = count($files) - 2;
+
+  $index = 0;
 
   $titans = array();
 
@@ -320,17 +381,25 @@ tr.whoiam td:hover{
 
   echo "<div class='titans'> <p>Team<span>-</span>Titans</p> </div>";
 
-  echo "<div class='container'>";
+  echo "<div class='container' id='header'>";
 // echo round(25.22222222215,2);
 
   echo '<table class="main">';
     echo '<tr> <th>#</th> <th>Full Name</th> <th>Infomation</th> <th>Status</th> </tr>';
 }
+
+
   while($index < $filesLength){
+
+  $valid = false;
 
   if($queries !== "json" || $queries === "html"){
     echo "<tr class='divider'><td></td><td></td><td></td><td></td></tr>";
   }
+
+  // print_r($dir.$files[$index]);
+  //
+  // return false;
 
   ob_flush();
   flush();
@@ -338,38 +407,59 @@ tr.whoiam td:hover{
     $array = explode('.', $dir.$files[$index]);
     $extension = end($array);
 
+    // print_r($extension);
 
     switch ($extension) {
       case 'js':
       $output = exec('node '.$dir.$files[$index]);
+      $valid = true;
         break;
 
       case 'php':
-      $output = exec('php '.$dir.$files[$index]);
+        $output = exec('php '.$dir.$files[$index]);
+        $valid = true;
       break;
 
       case 'py':
-      $output = exec('python '.$dir.$files[$index]);
+       $output = exec('python3 '.$dir.$files[$index]);
+       $valid = true;
       break;
-
-      default:
-        $output = "nothing do you jare";
-        break;
     }
 
+
+    if ($valid === false) {
+      $failed++;
+      $index++;
+    }
+
+    // if($output == ""){
+    //
+    //   $filesLength--;
+    //   array_splice($files,$index,1);
+    //   $index--;
+    // }
+
+
+
     $full_match=[];
+    $full_match_x=[];
+    // preg_match_all("/(?<=this is)(.*)(?=with)|(?<=ID)(.*)(?=and)|(?<=email)(.*)(?=using)|(?<=using)(.*)(?=for)/", $return, $matchex);
     preg_match_all("/(?<=this is)(.*)(?=with)|(?<=ID)(.*)(?=and)|(?<=email)(.*)(?=using)|(?<=using)(.*)(?=for)/", $output, $matches);
-    preg_match_all("/Hello World, this is(.*)with HNGi7 ID(.*)and email(.*)using(.*)for stage 2 task/",$output, $full_match);
+    preg_match_all("/^Hello World, this is (.*) with HNGi7 ID (.*) and email (.*) using (.*) for stage 2 task$/",$output, $full_match);
+
+    preg_match("/Hello World,\s+this\s+is\s+(([a-zA-Z.-]{1,}\s{1}){2,})\s*with\s+HNGi7\s+ID\s+(HNG-[A-Z0-9]{5})\s+and\s+email\s+([a-zA-Z0-9_.]+@[a-zA-Z]{4,}.[a-zA-Z.]{3,})\s+using\s+([a-zA-Z0-9]{3,})\s+for\s+stage\s+2\s+task/",$output, $full_match_x);
 
 
-    //
-    // $newout =  str_replace(array( '[', ']' ), '', $output);
-    //
-    $withoutMial = preg_replace('/(and\semail\s\w+\.{0,1}\w+\@(gmail|yahoo|hotmail).com)/','',$output);
+    $withoutMial = preg_replace('/(and\semail\s[a-zA-Z0-9._]+@[a-zA-Z]+.[a-z.]{3,})/','',$output);
 
-    // print_r($withoutMial);
+
+    // $withoutMial = preg_replace('/(and\semail\s\w+\.{0,1}\w+\@(gmail|yahoo|hotmail).(com|co.uk))/','',$output);
+
+
+
 
     $status = "fail";
+
 
 
     //
@@ -386,7 +476,7 @@ tr.whoiam td:hover{
     //   $x++;
     // }
 
-    if(count($full_match[0]) == 1){
+    if(count($full_match_x[0]) == 1){
       // array_push($pass,"okay");
       $status = "pass";
       $pass++;
@@ -411,8 +501,13 @@ tr.whoiam td:hover{
 
   // print_r($newout);
 
-  $num = $index - 1;
+  $num = $index + 1;
   $anim = $num/(7).s;
+
+  // if(strlen($output) === 0 ){
+  //   $num = $num - 1;
+  //   // $index--;
+  // }
 
     if($queries !== "json" || $queries === "html"){
       sleep(0.5);
@@ -429,14 +524,8 @@ tr.whoiam td:hover{
 
   }
 
-  function hello(){
-         echo "<br/>";
-        echo "Hello";
-        echo "<br/>";
-      }
 
-
-  $numfiles = $filesLength - 2;
+  $numfiles = $filesLength;
 
   $failpercentage = round((($failed/$numfiles) * 100),2).'%';
   $passpercentage = round((($pass/$numfiles) * 100),2).'%';
@@ -475,6 +564,8 @@ tr.whoiam td:hover{
 
   echo "</div>";
 
+  echo "<div id='scroll-to' class='hide-scrollTo'><span></span></div>";
+
 
 }
 
@@ -491,3 +582,35 @@ tr.whoiam td:hover{
 
 
  ?>
+
+
+ <script type="text/javascript">
+
+  let scrollTo = document.getElementById('scroll-to');
+
+
+  scrollTo.addEventListener('click',(e)=>{
+    scrollToMe('header');
+  });
+
+ function scrollToMe(id){
+
+         document.getElementById(id).scrollIntoView({
+             behavior: 'smooth'
+         });
+
+ }
+
+     window.onscroll = function() {myFunction()};
+     window.onload = function() {myFunction()};
+
+    function myFunction() {
+      if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
+        scrollTo.className = "show-scrollTo";
+      } else {
+      scrollTo.className = "hide-scrollTo";
+      }
+    }
+
+
+ </script>
