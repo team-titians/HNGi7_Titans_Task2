@@ -2,7 +2,7 @@ phoenix_dict = {
     "Name": "Precious Evwidonor",
     "HNG_ID": "HNG-04495",
     "Email": "peekube01@gmail.com",
-    "Language": "Python-v3"
+    "Language": "Python"
 }
 data1 = phoenix_dict.get("Name")
 data2 = phoenix_dict.get("HNG_ID")
