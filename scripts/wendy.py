@@ -15,4 +15,4 @@ my_details = '''
 
 data = json.loads(my_details)
 
-print("Hello World, this is " + data['name']  +  " with HNGi7 ID " + data['id'] + "and email " + data['email'] + " using " + data['language'] + " for stage 2 task")
+print("Hello World, this is " + data['name']  +  " with HNGi7 ID " + data['id'] + " and email " + data['email'] + " using " + data['language'] + " for stage 2 task")
