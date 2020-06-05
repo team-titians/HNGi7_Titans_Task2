@@ -1,5 +1,9 @@
-#!/usr/bin/env python3.8
-name = "Olaiya Ifedapo Princewill"
-hng_id = "HNG-03278"
-language = "Python"
-print("Hello World, this is " + name + " with HNGi7 ID " + hng_id + " using " + language + " for stage 2 task")
+
+
+def info():
+    name="Olaiya Ifedapo"
+    hngid="HNG-03278"
+    email="princewillolaiya@gmail.com"
+    language="Python"
+    return f"Hello World, this is {name} with HNGi7 ID {hngid} and email {email} using {language} for stage 2 task"
+print(info())
