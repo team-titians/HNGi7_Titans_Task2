@@ -1,4 +1,4 @@
-et name = "Balogun Kayode";
+let name = "Balogun Kayode";
 let email = "kayodefredrickbalogun@gmail.com";
 let identification = "HNG - 00215";
 
