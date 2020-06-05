@@ -5,5 +5,5 @@ let data={
     language:"JavaScript"
 };
 
-console.log(`Hello World, this is ${data.fullName} with HNGi7 ID ${data.ID} using ${data.language} for stage 2 task. ${data.email}`);
+console.log(`Hello World, this is ${data.fullName} with HNGi7 ID ${data.ID} and email ${data.email} using ${data.language} for stage 2 task.`);
 
