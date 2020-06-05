@@ -8,5 +8,3 @@ function details() {
 }
 
 details();
-
-// console.log(details());
