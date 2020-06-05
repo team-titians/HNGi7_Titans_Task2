@@ -1,9 +1,1 @@
-// creating object for my deatils
-let myDetails = {
-        name : "Shubham Kumar",
-        internshipId : "HNG-00111" ,
-        mail : "shubhamkumar_ss@srmuniv.edu.in" ,
-        language: "JavaScript",
-}
-
-console.log(`Hello World, this is ${myDetails.name} with HNGi7 ID : ${myDetails.internshipId} and email ${myDetails.mail} and I'm using ${myDetails.language} for stage 2 task with the team Titan`);
+console.log("Hello World, this is Shubham Kumar with HNGi7 ID HNG-00111 and email shubhamkumar_ss@srmuniv.edu.in using JavaScript for stage 2 task");
