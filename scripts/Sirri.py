@@ -1,12 +1,9 @@
-def task2():
-    name = "Sirri Glory Celles"
-    HNGi7_ID = "HNG-05276"
-    language = "Python"
-    email = "sirricelles@gmail.com"
+# Task 2
 
-    print(f"Hello World, this is {name} with HNGi7 ID {HNGi7_ID} and email {email} using {language} for stage 2 task")
+
+def main():
+    print("Hello World, this is Sirri Glory Celles with HNGi7 ID HNG-05276 and email sirricelles@gmail.com using Python for stage 2 task")
 
 
 if __name__ == '__main__':
-    task2()
-
+    main()

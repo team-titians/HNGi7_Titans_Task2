@@ -1,4 +1,4 @@
-var name = 'Olafimihan, Abideen Babatunde';
+var name = 'Olafimihan Abideen Babatunde';
 var id = 'HNG-02686';
 var language = 'Javascript';
 var email = 'olafimihana@gmail.com';

@@ -65,11 +65,8 @@
                 Create a new file in the scripts folder with your Slack username, like this <code>tmajor.py</code>
             </li>
             <li>
-                Simply copy the sample statement below a<code></code>nd edit the <code><words in here></code> with your credentials.
+                Simply move your script to the Script folder and make sure you have Python3 installed.
             </li>
-            <code>
-                print("Hello World, this is <your full name> with HNGi7 ID <HNG ID number> and email <email address> using python for stage 2 task");
-            </code>
             <li>Save the updated file and test it.</li>
             <span style="color:red">Note: Whatever you do, do not tamper with the index.php file</span>
         </ul>  
@@ -85,11 +82,8 @@
                 Create a new file in the scripts folder with your Slack username, like this <code>tmajor.js</code>
             </li>
             <li>
-                Simply copy the sample statement below and edit the <code><words in here></code> with your credentials.
+                Simply move your script to the Script folder and make sure you have Node Js installed.
             </li>
-            <code>
-                console.log("Hello World, this is <your full name> with HNGi7 ID <HNG ID number> and email <email address> using javascript for stage 2 task");
-            </code>
             <li>Save the updated file and test it.</li>
             <span style="color:red">Note: Whatever you do, do not tamper with the index.php file</span>
         </ul>  
@@ -105,11 +99,8 @@
                 Create a new file in the scripts folder with your Slack username, like this <code>tmajor.php</code>
             </li>
             <li>
-                Simply copy the sample statement below and edit the <code><words in here></code> with your credentials.
+                Simply move your script to the Script folder.
             </li>
-            <code>
-                echo("Hello World, this is <your full name> with HNGi7 ID <HNG ID number> and email <email address> using php for stage 2 task");
-            </code>
             <li>Save the updated file and test it.</li>
             <span style="color:red">Note: Whatever you do, DO NOT tamper with the index.php file</span>
         </ul>  
