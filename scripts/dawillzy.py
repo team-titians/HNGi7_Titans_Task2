@@ -1,6 +1,6 @@
 name = "Wilfred Omuvwie"
-id = "HNG-05366"
+id = "HNGi7-05366"
 email = "dawillzy@gmail.com"
-language = "python"
-
-print("Hello World, this is " + name + " with HNGi7 ID " + id + " using " + language + " for stage 2 task")
+language = "Python"
+message = "Hello World, this is Wilfred Omuvwie with ID HNGi7-05366 using python for stage 2 task" 
+print(message)
