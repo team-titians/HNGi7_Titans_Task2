@@ -1,0 +1,1 @@
+console.log("Hello World, this is Maxwell Godwill with HNGi7 ID HNG-05005 and email aisosaebohon@gmail.com using javascript for stage 2 task");
