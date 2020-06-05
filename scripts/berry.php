@@ -4,6 +4,6 @@
  $script = "php";
  $email = "phemmynecse4life@gmail.com";
 
- $display= ("Hello World, this is $name with HNGi7 ID $hngid and email $email using $script for stage 2 task");
+ $display = ("Hello World, this is $name with HNGi7 ID $hngid and email $email using $script for stage 2 task");
  echo $display;
 ?>
