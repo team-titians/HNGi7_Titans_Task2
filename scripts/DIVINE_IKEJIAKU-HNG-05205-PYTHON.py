@@ -1,8 +1,1 @@
-name = "Ikejiaku Divine"
-hngi7_id = " HNG-05205"
-language = "Python"
-email = "divineikejiaku@gmail.com"
-
-
-print(
-    f"Hello World, this is {name} with HNGi7 ID {hngi7_id} and email {email} using {language} for stage 2 task.")
+print("Hello World, this is Ikejiaku Divine with HNGi7 ID HNG-05205 and email divineikejiaku@gmail.com using Python for stage 2 task.")
