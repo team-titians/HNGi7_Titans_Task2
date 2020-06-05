@@ -1,1 +1,0 @@
-print("Hello world,this is Ajayi Olamide with HGNi7 id: HGN-00886 and i used python language for this task")

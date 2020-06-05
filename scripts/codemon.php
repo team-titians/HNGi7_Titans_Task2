@@ -1,1 +1,0 @@
-echo('Hello World, this is JohnsonAwah Alfred with HNGi7 ID HNG-00382 and email johnsonmessilo19@gmail.com using PHP for stage 2 task')

@@ -1,1 +1,0 @@
-console.log("Hello World, this is Lotanna Kyrian Agbaka with HNGi7 ID HNG-01393 and email kyrian.lotanna@gmail.com using nodejs for stage 2 task");
