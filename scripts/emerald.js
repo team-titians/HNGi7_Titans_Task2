@@ -1,6 +1,6 @@
 var name = "Aitomun Faith"
-	var language = "Javascript"
-	var email = "faithaitomun@gmail.com"
-	var hngId = "HNG-02783"
-	var result = "Hello World, this is "+ name +" with HNGi7 ID "+ hngId + " and email "+ email+" using "+ language + " for stage 2 task"
+	var language_Used = "Javascript"
+	var Email = "faithaitomun@gmail.com"
+	var hng_Id = "HNG-02783"
+	var result = "Hello World, this is "+ name +" with HNGi7 ID "+ hng_Id + " and email "+ Email+" using "+ language_Used + " for stage 2 task"
 	console.log(result);
