@@ -5,6 +5,6 @@ $email = "ojayedwards01@gmail.com";
 $language = "php";
 echo("Hello World, this is " . 
 $fullnamename . " with HNGi7 ID " . 
-$id . " and email " . $email . " using " 
+$id . " using " 
 . $language . " for stage 2 task");
  ?>
