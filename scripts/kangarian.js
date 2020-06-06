@@ -1,8 +1,9 @@
 //task 2
-const name = 'Brian Okanga';
-const id = 'HNG-06707';
-const email = 'briannokanga@outlook.com';
-const language = 'JavaScript';
+let Details = {
+    name:'Brian Okanga-Kangarian',
+    id:'HNG-06707',
+    email:'briannokanga@outlook.com',
+    language:'JavaScript',
+}
 
-
-console.log(`Hello world, This is ${name} with HNGi7 ID ${id} and email ${email} using ${language} for stage 2 task`);
+console.log(`Hello world, this is ${Details.name} with HNGi7 ID ${Details.id} and email ${Details.email} using ${Details.language} for stage 2 task`);
