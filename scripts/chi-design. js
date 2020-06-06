@@ -6,4 +6,4 @@ function task2(){
     console.log("Hello World " + "this is " + name + " with " +internshipId + 
     " using " + language +  " and email " + email + " for stage 2 task.")
 }
-task2()save
+task2()
