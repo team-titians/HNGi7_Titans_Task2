@@ -1,12 +1,13 @@
-function omoloye () {
-    
-    var name = "Omoloye oluwatobi";
-    var id = "HNG-003114";
-    var email = "tobi_omoloye@yahoo.com";
-    var language = "javascript";
-    return (
-        `Hello World, this is ${name} with HNGi7 ID ${id} and email ${email} using ${language} for stage 2 task`
-    )
-}
+const name = 'Omoloye oluwatobi';
+const id = 'HNG-03114';
+const lanuage = 'javascript';
+const email = 'tobi-omoloye@yahoo.com';
 
-console.log(omoloye());
+const output = function(num) {
+	if(num % 2 === 0) {
+		return 'Hello world, this is ${name} with HNGi7 ID ${id} using ${language} for stage 2 task';
+	} else {
+		return null;
+	}
+}
+console.log(output(66));
