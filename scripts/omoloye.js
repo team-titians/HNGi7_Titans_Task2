@@ -1,6 +1,6 @@
 function omoloye () {
     
-    var name = "Omoloye oluwatobi";
+    var name = "Omoloye Oluwatobi";
     var id = "HNG-003114";
     var email = "tobi_omoloye@yahoo.com";
     var language = "javascript";

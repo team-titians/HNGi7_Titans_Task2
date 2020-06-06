@@ -1,5 +1,5 @@
 <?php 
- $name = "Daramola Olorunfemi";
+ $name = "Olorunfemi Daramola";
  $hngid = "HNG-01620";
  $script = "php";
  $email = "phemmynesce4life@gmail.com";
