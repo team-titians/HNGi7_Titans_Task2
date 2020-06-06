@@ -1,1 +1,0 @@
-console.log("Hello World, this is Opeyemi Tolulope with HNGi7 HNG-02301 and email opeyemitolulope25@gmail.com using nodejs for stage 2 task");
