@@ -1,7 +1,8 @@
 //task 2
-const NAME = 'Brian Okanga';
-const HNG_ID = 'HNG-06707';
-const EMAIL = 'briannokanga@outlook.com';
-const LANGUAGE = 'JavaScript';
+const name = 'Brian Okanga';
+const id = 'HNG-06707';
+const email = 'briannokanga@outlook.com';
+const language = 'JavaScript';
 
-console.log(`Hello world, my name is ${NAME}, my HNG ID is ${HNG_ID} and my email is ${EMAIL} and ill be using ${LANGUAGE} for the task`);
+
+console.log(`Hello world, This is ${name} with HNGi7 ID ${id} and email ${email} using ${language} for stage 2 task`);
