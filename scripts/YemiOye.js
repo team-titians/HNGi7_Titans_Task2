@@ -1,4 +1,4 @@
-//Promotion to Stage 2. All about me!😃
+
 var name = "Opeyemi Oyeyipo";
 var hngID = "HNGi7 ID_02782";
 var email = "opeyemioyeyipo7@gmail.com";
