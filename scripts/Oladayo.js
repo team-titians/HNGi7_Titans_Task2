@@ -1,6 +1,6 @@
 const myData = {
     name: "Akinola oladayo",
-    language : "javascript",
+    language : "Javascript",
     email:"oladayoakinola56@gmail.com",
     hngld:"HNG-00210"
 };
