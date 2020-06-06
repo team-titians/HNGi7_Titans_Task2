@@ -1,6 +1,8 @@
-fullname = 'Ogunsipe Oladolapo'
-ID = 'HNG-00590'
-email = 'dolapoogunsipe@gmail.com'
+full_name = 'Ogunsipe Oladolapo'
 language = 'Python'
-print("Hello World, this is", fullname, "with HNGi7 ID", ID,
-      "using", language, "for stage 2 task.{}".format(email))
+hngi7_Id = 'HNG-00590'
+email_address = 'dolapoogunsipe@gmail.com'
+
+
+print(
+    f'Hello World,this is {full_name} with HNGi7 ID {hngi7_Id} and email {email_address} using {language} for stage 2 task.')
