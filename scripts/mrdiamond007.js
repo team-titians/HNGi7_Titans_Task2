@@ -1,3 +1,8 @@
-console.log(
-  "hello world, my name is ganiyu babatunde with HnGi7 id HNG-03586 and email ganiyubabatunde17@gmail.com using javascript for task 2"
-);
+let myProfile = {
+  fullname: "ganiyu babatunde",
+  id: "hng-03586",
+  language: "javascript",
+  email: "ganiyubabatunde17@gmail.com",
+};
+
+console.log(myProfile);
