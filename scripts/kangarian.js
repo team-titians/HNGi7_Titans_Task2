@@ -1,5 +1,5 @@
 //task 2
-const NAME = 'Brian okanga';
+const NAME = 'Brian Okanga';
 const HNG_ID = 'HNG-06707';
 const EMAIL = 'briannokanga@outlook.com';
 const LANGUAGE = 'JavaScript';
