@@ -5,5 +5,4 @@
 	$hngi_ID = "HNG-01464";
 ?>
 
-Hello World, this is <?php print_r($name); ?> with HNGi7 ID <?php print_r($hngi_ID); ?> and email <?php print_r($email); ?> using <?php print_r($lang); ?> for stage 2 task 
-
+echo 'Hello World, this is '.$name.' with HNGi7 ID '.$hngi_ID.' and email '.$email.' using '.$lang.' for stage 2 task';
