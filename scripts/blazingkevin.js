@@ -1,1 +1,7 @@
-console.log("Hello World, this is Kevin Uti with HNGi7 ID HNG-04297 and email kvuti10@gmail.com using javascript for stage 2 task");
+const info = {
+    fullName: 'Okechukwu Onwualimba', 
+    HNGi7ID: 'HNG-00405', 
+    language: 'JavaScript',
+    email: 'okechukwuonwualimba@gmail.com'
+}
+console.log(`Hello World, this is ${info.fullName} with HNGi7 ID ${info.HNGi7ID} using ${info.language} for stage 2 task`)

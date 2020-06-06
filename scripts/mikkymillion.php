@@ -1,8 +1,6 @@
 <?php
-$full_name = 'Adesanya Temitope Michael';
-$ID = 'HNG-02729';
+$NAME = "Adesanya Temitope";
+$ID = "HNG-02729";
 $language = 'PHP';
-
-echo("Hello World, this is $full_name with HNGi7 ID: $ID using $language for stage 2 task.");
-
-?>
+$email = "atmonemillion@gmail.com";
+echo( "Hello World, this is $NAME with HNGi7 ID $ID and email $email using $language for stage 2 task");

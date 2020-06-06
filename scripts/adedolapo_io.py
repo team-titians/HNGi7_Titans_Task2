@@ -1,5 +1,8 @@
-def hngtask(fullname = 'Adedolapo Ismail', idnum = 'HNG-02994', lang = 'python', email = 'dolapo2509@gmail.com'):
-    print("Hello World", "this is" ,fullname ,"with HNGi7 ID" 
-            ,idnum ,"and email" ,email ,"using" ,lang ,"for stage 2 task.", flush=True)
+name = "Adedolapo Ismail"
+HNG_ID = "HNG-02994"
+email = "dolapo2509@gmail.com"
+language = "python"
 
-hngtask()
+task = f"Hello World, this is {name} with HNGi7 ID {HNG_ID} and email {email} using {language} for stage 2 task"
+
+print(task)

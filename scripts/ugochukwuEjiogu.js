@@ -1,5 +1,5 @@
 const showDetails = (name, hngId, email, language) => {
-    return `Hello World, this is ${name} with HNGi7 ID, ${hngId} and email, ${email} using ${language} for stage 2 task`;
+    return `Hello World, this is ${name} with HNGi7 ID ${hngId} and email ${email} using ${language} for stage 2 task`;
 };
 
 const myName = 'Ugochukwu Ejiogu';
