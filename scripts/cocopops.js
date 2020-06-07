@@ -1,7 +1,9 @@
 
- function sayHello(){
-   const name = 'Hello world, ';
 
-  console.log(name + 'this is Chukwuneke Prince  with HNGi7 ID 00066 and my email address is chukwunekeprince@gmail.com using node for task two');
-}
-sayHello();
+let name = "Chukwuneke Prince";
+let HNGid = "HNG-00066";
+let language = "Javascript";
+let email = "chukwunekeprince@gmail.com";
+
+console.log("Hello world, this is "+name+" with HNGi7 ID "+HNGid+" using "+language+" for stage 2 task "+" and "+email"");
+//modified
