@@ -1,5 +1,5 @@
-const fullname =  'Ezichi Amarachi';
- const id = 'HNG-05820';
- const language = 'Javascript';
- const email = 'ezichukwuamarachi@gmail.com';
-console.log(`Hello World, this is ${fullname} with HNGi7 ID ${id} using ${language} for stage 2 task`);
+var full$Name = "Ezichi Amarachi";
+var email ="ezichukwuamarachi@gmail.com";
+var id = "HNG-05820";
+var language = "javascript";
+console.log("Hello World," + " this is " +  full$Name  +  " with HNGi7 ID "  +  id  +  " and email "  + email +  " using "  +  language  +  " for stage 2 task ");
