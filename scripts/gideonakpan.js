@@ -2,6 +2,8 @@
 var profile = {
     fullName: "Gideon Akpan",
     ID: "HNG-05298",
+    email: "gideonakpan98@yahoo.com",
+    slackname: "gideonakpan",
     language: "Javascript",
     showProfile : function() {
         return "Hello World, this is " + this.fullName + " with HNGi7 ID " + this.ID +" using " + this.language + " for stage 2 task.";
