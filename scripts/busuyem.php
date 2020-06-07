@@ -1,6 +1,6 @@
 <?php
 
-$name = "Owoyemi Busuyi Philip";
+$name = "Busuyi Owoyemi";
 $id = "HNG-06108";
 $language = "PHP";
 $email = "owoyemibusuyi@gmail.com";
