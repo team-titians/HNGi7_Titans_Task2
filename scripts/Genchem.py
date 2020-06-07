@@ -1,0 +1,1 @@
+print("Hello World, this is Njoku Genesis Victor with HNGi7 ID HNG-00552 using Python for stage 2 task")
